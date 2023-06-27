@@ -40,10 +40,10 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 ## usage
 
 - use this template, replace list below
-  - `github.com/bridgewwater/temp-golang-cli-fast` to your package name 
-  - `bridgewwater` to your owner name
-  - `temp-golang-cli-fast` to your project name
-  - `go 1.18`, `^1.18`, `1.18.10` to new go version for dev 
+    - `github.com/bridgewwater/temp-golang-cli-fast` to your package name
+    - `bridgewwater` to your owner name
+    - `temp-golang-cli-fast` to your project name
+    - `go 1.18`, `^1.18`, `1.18.10` to new go version for dev
 
 ## evn
 
@@ -54,6 +54,8 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 | lib                                 | version |
 |:------------------------------------|:--------|
 | https://github.com/stretchr/testify | v1.8.4  |
+| https://github.com/urfave/cli/      | v2.23.7 |
+| https://github.com/bar-counter/slog | v1.3.0  |
 
 # dev
 
@@ -172,7 +174,7 @@ $ make helpDocker
 ### log
 
 - cli log use [github.com/bridgewwater/go-logger](https://github.com/bar-counter/slog)
-  - open debug log by env `CLI_VERBOSE=true` or global flag `--verbose` 
+    - open debug log by env `CLI_VERBOSE=true` or global flag `--verbose`
 
 ```go
 package foo
