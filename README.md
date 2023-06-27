@@ -37,17 +37,10 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
 
-## usage
-
-- use this template, replace list below
-    - `github.com/bridgewwater/temp-golang-cli-fast` to your package name
-    - `bridgewwater` to your owner name
-    - `temp-golang-cli-fast` to your project name
-    - `go 1.18`, `^1.18`, `1.18.10` to new go version for dev
-
-## evn
+## env
 
 - minimum go version: go 1.18
+- change `go 1.18`, `^1.18`, `1.18.10` to new go version
 
 ### libs
 
@@ -56,6 +49,13 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 | https://github.com/stretchr/testify | v1.8.4  |
 | https://github.com/urfave/cli/      | v2.23.7 |
 | https://github.com/bar-counter/slog | v1.4.0  |
+
+## usage
+
+- use this template, replace list below
+    - `github.com/bridgewwater/temp-golang-cli-fast` to your package name
+    - `bridgewwater` to your owner name
+    - `temp-golang-cli-fast` to your project name
 
 # dev
 
