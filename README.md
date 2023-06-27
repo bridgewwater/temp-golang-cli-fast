@@ -55,7 +55,7 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 |:------------------------------------|:--------|
 | https://github.com/stretchr/testify | v1.8.4  |
 | https://github.com/urfave/cli/      | v2.23.7 |
-| https://github.com/bar-counter/slog | v1.3.0  |
+| https://github.com/bar-counter/slog | v1.4.0  |
 
 # dev
 

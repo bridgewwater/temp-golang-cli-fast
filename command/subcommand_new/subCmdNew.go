@@ -35,18 +35,22 @@ func flag() []cli.Flag {
 
 func action(c *cli.Context) error {
 	slog.Debug("SubCommand [ new ] start")
-	newCommandEntry = withGlobalFlag(c)
+	entry, err := withEntry(c)
+	if err != nil {
+		return err
+	}
+	newCommandEntry = entry
 	return newCommandEntry.Exec()
 }
 
-func withGlobalFlag(c *cli.Context) *NewCommand {
+func withEntry(c *cli.Context) (*NewCommand, error) {
 	if c.Bool("lib") {
 		slog.Info("new lib mode")
 	}
 	globalEntry := command.CmdGlobalEntry()
 	return &NewCommand{
 		isDebug: globalEntry.Verbose,
-	}
+	}, nil
 }
 
 var newCommandEntry *NewCommand

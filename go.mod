@@ -3,7 +3,7 @@ module github.com/bridgewwater/temp-golang-cli-fast
 go 1.18
 
 require (
-	github.com/bar-counter/slog v1.3.0
+	github.com/bar-counter/slog v1.4.0
 	github.com/stretchr/testify v1.8.4
 	github.com/urfave/cli/v2 v2.23.7
 )
