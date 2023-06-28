@@ -7,16 +7,17 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func Command() []*cli.Command {
-	urfave_cli.UrfaveCliAppendCliFlag(command.GlobalFlag(), command.HideGlobalFlag())
-	return []*cli.Command{
-		{
-			Name:   "new",
-			Usage:  "new command",
-			Action: action,
-			Flags:  flag(),
-		},
-	}
+const commandName = "new"
+
+var commandEntry *NewCommand
+
+type NewCommand struct {
+	isDebug bool
+}
+
+func (n *NewCommand) Exec() error {
+
+	return nil
 }
 
 func flag() []cli.Flag {
@@ -27,20 +28,11 @@ func flag() []cli.Flag {
 			Value: false,
 		},
 		&cli.StringFlag{
-			Name:  "name",
-			Usage: "Set the resulting package name, defaults to the directory name",
+			Name:    "name",
+			Aliases: []string{"n"},
+			Usage:   "Set the resulting package name, defaults to the directory name",
 		},
 	}
-}
-
-func action(c *cli.Context) error {
-	slog.Debug("SubCommand [ new ] start")
-	entry, err := withEntry(c)
-	if err != nil {
-		return err
-	}
-	newCommandEntry = entry
-	return newCommandEntry.Exec()
 }
 
 func withEntry(c *cli.Context) (*NewCommand, error) {
@@ -53,12 +45,24 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 	}, nil
 }
 
-var newCommandEntry *NewCommand
-
-type NewCommand struct {
-	isDebug bool
+func action(c *cli.Context) error {
+	slog.Debugf("SubCommand [ %s ] start", commandName)
+	entry, err := withEntry(c)
+	if err != nil {
+		return err
+	}
+	commandEntry = entry
+	return commandEntry.Exec()
 }
 
-func (n *NewCommand) Exec() error {
-	return nil
+func Command() []*cli.Command {
+	urfave_cli.UrfaveCliAppendCliFlag(command.GlobalFlag(), command.HideGlobalFlag())
+	return []*cli.Command{
+		{
+			Name:   commandName,
+			Usage:  "",
+			Action: action,
+			Flags:  flag(),
+		},
+	}
 }

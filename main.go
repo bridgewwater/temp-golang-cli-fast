@@ -19,6 +19,7 @@ var packageJson string
 func main() {
 	pkgJson.InitPkgJsonContent(packageJson)
 	app := cli.NewApp()
+	app.EnableBashCompletion = true
 	app.Version = pkgJson.GetPackageJsonVersionGoStyle(false)
 	app.Name = pkgJson.GetPackageJsonName()
 	if pkgJson.GetPackageJsonHomepage() != "" {
