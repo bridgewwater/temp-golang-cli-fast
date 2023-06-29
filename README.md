@@ -52,7 +52,14 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 
 ## usage
 
-- use this template, replace list below
+```bash
+# install at ${GOPATH}/bin
+$ go install github.com/bridgewwater/temp-golang-cli-fast@latest
+# install version v1.0.0
+$ go install github.com/bridgewwater/temp-golang-cli-fast@v1.0.0
+```
+
+- use this template, replace list below and add usage
     - `github.com/bridgewwater/temp-golang-cli-fast` to your package name
     - `bridgewwater` to your owner name
     - `temp-golang-cli-fast` to your project name
