@@ -3,6 +3,7 @@ package subcommand_new
 import (
 	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/urfave_cli"
 	"github.com/urfave/cli/v2"
 )
@@ -13,6 +14,8 @@ var commandEntry *NewCommand
 
 type NewCommand struct {
 	isDebug bool
+
+	PlatformConfig *constant.PlatformConfig
 }
 
 func (n *NewCommand) Exec() error {
@@ -42,6 +45,8 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 	globalEntry := command.CmdGlobalEntry()
 	return &NewCommand{
 		isDebug: globalEntry.Verbose,
+
+		PlatformConfig: constant.BindPlatformConfig(c),
 	}, nil
 }
 
@@ -62,7 +67,7 @@ func Command() []*cli.Command {
 			Name:   commandName,
 			Usage:  "",
 			Action: action,
-			Flags:  flag(),
+			Flags:  urfave_cli.UrfaveCliAppendCliFlag(flag(), constant.PlatformFlags()),
 		},
 	}
 }
