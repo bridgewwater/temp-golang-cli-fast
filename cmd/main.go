@@ -3,8 +3,8 @@
 package main
 
 import (
-	_ "embed"
 	"fmt"
+	"github.com/bridgewwater/temp-golang-cli-fast"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/command/subcommand_new"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
@@ -13,11 +13,8 @@ import (
 	os "os"
 )
 
-//go:embed package.json
-var packageJson string
-
 func main() {
-	pkgJson.InitPkgJsonContent(packageJson)
+	pkgJson.InitPkgJsonContent(temp_golang_cli_fast.PackageJson)
 	app := cli.NewApp()
 	app.EnableBashCompletion = true
 	app.Version = pkgJson.GetPackageJsonVersionGoStyle(false)

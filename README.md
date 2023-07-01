@@ -32,7 +32,7 @@ We welcome community contributions to this project.
 
 Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
 
-## Features
+## Features 
 
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
@@ -54,9 +54,9 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 
 ```bash
 # install at ${GOPATH}/bin
-$ go install -v github.com/bridgewwater/temp-golang-cli-fast@latest
+$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd@latest
 # install version v1.0.0
-$ go install -v github.com/bridgewwater/temp-golang-cli-fast@v1.0.0
+$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd@v1.0.0
 ```
 
 - use this template, replace list below and add usage
