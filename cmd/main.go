@@ -9,6 +9,7 @@ import (
 	"github.com/bridgewwater/temp-golang-cli-fast/command/subcommand_new"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/urfave_cli"
+	"github.com/gookit/color"
 	"github.com/urfave/cli/v2"
 	os "os"
 )
@@ -46,10 +47,10 @@ func main() {
 
 	args := os.Args
 	if len(args) < 2 {
-		fmt.Printf("please see help as: %s --help\n", app.Name)
+		fmt.Printf("%s %s --help\n", color.Yellow.Render("please see help as:"), app.Name)
 		os.Exit(2)
 	}
 	if err := app.Run(args); nil != err {
-		fmt.Printf("run err: %v\n", err)
+		color.Redf("cli err at %v\n", err)
 	}
 }
