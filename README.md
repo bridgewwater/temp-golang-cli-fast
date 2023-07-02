@@ -72,7 +72,7 @@ $ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd@v1.0.0
 in go mod project
 
 ```bash
-# warning use privte git host must set
+# warning use private git host must set
 # global set for once
 # add private git host like github.com to evn GOPRIVATE
 $ go env -w GOPRIVATE='github.com'
