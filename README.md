@@ -155,9 +155,10 @@ $ make helpDocker
 ├── Makefile                       # make entry
 ├── README.md
 ├── build                          # build output
-├── cmd                            # command line main package
-│         ├── main.go                 # command line entry
-│         └── main_test.go            # integrated test entry
+├── cmd
+│     └── temp-golang-cli-fast     # command line main package install and dev entrance
+│         ├── main.go                   # command line entry
+│         └── main_test.go              # integrated test entry
 ├── command                        # command line package
 │         ├── TestMain.go             # common entry in unit test package
 │         ├── flag.go                 # global flag
