@@ -1,13 +1,13 @@
 [![golang-ci](https://github.com/bridgewwater/temp-golang-cli-fast/workflows/golang-ci/badge.svg?branch=main)](https://github.com/bridgewwater/temp-golang-cli-fast/actions/workflows/golang-ci.yml)
-[![license](https://img.shields.io/github/license/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast)
+[![GitHub license](https://img.shields.io/github/license/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast)
 [![go mod version](https://img.shields.io/github/go-mod/go-version/bridgewwater/temp-golang-cli-fast?label=go.mod)](https://github.com/bridgewwater/temp-golang-cli-fast)
-[![GoDoc](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast?status.png)](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast/)
-[![GoReportCard](https://goreportcard.com/badge/github.com/bridgewwater/temp-golang-cli-fast)](https://goreportcard.com/report/github.com/bridgewwater/temp-golang-cli-fast)
+[![GoDoc](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast?status.png)](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast)
+[![goreportcard](https://goreportcard.com/badge/github.com/bridgewwater/temp-golang-cli-fast)](https://goreportcard.com/report/github.com/bridgewwater/temp-golang-cli-fast)
 [![codecov](https://codecov.io/gh/bridgewwater/temp-golang-cli-fast/branch/main/graph/badge.svg)](https://codecov.io/gh/bridgewwater/temp-golang-cli-fast)
 [![docker version semver](https://img.shields.io/docker/v/bridgewwater/temp-golang-cli-fast?sort=semver)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast/tags?page=1&ordering=last_updated)
 [![docker image size](https://img.shields.io/docker/image-size/bridgewwater/temp-golang-cli-fast)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast)
 [![docker pulls](https://img.shields.io/docker/pulls/bridgewwater/temp-golang-cli-fast)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast/tags?page=1&ordering=last_updated)
-[![github release](https://img.shields.io/github/v/release/bridgewwater/temp-golang-cli-fast?style=social)](https://github.com/bridgewwater/temp-golang-cli-fast/releases)
+[![GitHub release)](https://img.shields.io/github/v/release/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast/releases)
 
 ### cli tools to init project fast
 
@@ -32,6 +32,8 @@ We welcome community contributions to this project.
 
 Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
 
+请阅读有关 [贡献者指南](.github/CONTRIBUTING_DOC/zh-CN/CONTRIBUTING.md) 以获取更多如何入门的信息
+
 ## Features
 
 - [ ] more perfect test case coverage
@@ -55,9 +57,9 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 
 ```bash
 # install at ${GOPATH}/bin
-$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd@latest
+$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd/temp-golang-cli-fast@latest
 # install version v1.0.0
-$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd@v1.0.0
+$ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd/temp-golang-cli-fast@v1.0.0
 ```
 
 - use this template, replace list below and add usage
