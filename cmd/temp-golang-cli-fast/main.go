@@ -12,6 +12,7 @@ import (
 	"github.com/gookit/color"
 	"github.com/urfave/cli/v2"
 	os "os"
+	"time"
 )
 
 func main() {
@@ -24,10 +25,12 @@ func main() {
 		app.Usage = fmt.Sprintf("see: %s", pkgJson.GetPackageJsonHomepage())
 	}
 	app.Description = pkgJson.GetPackageJsonDescription()
-
+	year := time.Now().Year()
+	jsonAuthor := pkgJson.GetPackageJsonAuthor()
+	app.Copyright = fmt.Sprintf("© 2022-%d %s", year, jsonAuthor.Name)
 	author := &cli.Author{
-		Name:  pkgJson.GetPackageJsonAuthor().Name,
-		Email: pkgJson.GetPackageJsonAuthor().Email,
+		Name:  jsonAuthor.Name,
+		Email: jsonAuthor.Email,
 	}
 	app.Authors = []*cli.Author{
 		author,
