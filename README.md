@@ -49,9 +49,10 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 | lib                                 | version |
 |:------------------------------------|:--------|
 | https://github.com/stretchr/testify | v1.8.4  |
-| https://github.com/urfave/cli/      | v2.23.7 |
+| https://github.com/sebdah/goldie    | v2.5.3  |
 | https://github.com/gookit/color     | v1.5.3  |
 | https://github.com/bar-counter/slog | v1.4.0  |
+| https://github.com/urfave/cli/      | v2.23.7 |
 
 ## usage
 
