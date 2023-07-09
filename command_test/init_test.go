@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/bridgewwater/temp-golang-cli-fast/utils/env_kit"
 	"io/fs"
 	"math/rand"
 	"os"
@@ -36,10 +35,10 @@ var (
 )
 
 func init() {
-	envDebug = env_kit.FetchOsEnvBool(keyEnvDebug, false)
-	envCiNum = env_kit.FetchOsEnvInt(keyEnvCiNum, 1)
-	envCiKey = env_kit.FetchOsEnvStr(keyEnvCiKey, "")
-	envCiKeys = env_kit.FetchOsEnvArray(keyEnvCiKeys)
+	envDebug = fetchOsEnvBool(keyEnvDebug, false)
+	envCiNum = fetchOsEnvInt(keyEnvCiNum, 1)
+	envCiKey = fetchOsEnvStr(keyEnvCiKey, "")
+	envCiKeys = fetchOsEnvArray(keyEnvCiKeys)
 	for i := 0; i < 200; i++ {
 		strData = append(strData, randomStr(300))
 	}
