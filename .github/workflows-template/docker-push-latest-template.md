@@ -11,8 +11,6 @@ name: Docker Image buildx latest
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   # name of docker image
