@@ -7,6 +7,7 @@ import (
 	"github.com/bridgewwater/temp-golang-cli-fast"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/command/subcommand_new"
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/urfave_cli"
 	"github.com/gookit/color"
@@ -27,7 +28,7 @@ func main() {
 	app.Description = pkgJson.GetPackageJsonDescription()
 	year := time.Now().Year()
 	jsonAuthor := pkgJson.GetPackageJsonAuthor()
-	app.Copyright = fmt.Sprintf("© 2022-%d %s", year, jsonAuthor.Name)
+	app.Copyright = fmt.Sprintf("© %s-%d %s", constant.CopyrightStartYear, year, jsonAuthor.Name)
 	author := &cli.Author{
 		Name:  jsonAuthor.Name,
 		Email: jsonAuthor.Email,
