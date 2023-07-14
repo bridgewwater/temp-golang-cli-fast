@@ -41,6 +41,9 @@ func GlobalAction(c *cli.Context) error {
 	if cmdGlobalEntry == nil {
 		panic(fmt.Errorf("not init GlobalBeforeAction success to new cmdGlobalEntry"))
 	}
+
+	slog.Debug("-> start GlobalAction")
+
 	err := cmdGlobalEntry.globalExec()
 	if err != nil {
 		return err
