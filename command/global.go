@@ -48,7 +48,7 @@ func (c *GlobalCommand) globalExec() error {
 // withGlobalFlag
 //
 // bind global flag to globalExec
-func withGlobalFlag(c *cli.Context, cliVersion, cliName string) *GlobalCommand {
+func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand, error) {
 	slog.Debug("-> withGlobalFlag")
 
 	isVerbose := c.Bool("verbose")
@@ -63,7 +63,7 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName string) *GlobalCommand {
 		Verbose: isVerbose,
 		RootCfg: config,
 	}
-	return &p
+	return &p, nil
 }
 
 // GlobalBeforeAction
@@ -79,7 +79,10 @@ func GlobalBeforeAction(c *cli.Context) error {
 		slog.Warnf("-> open verbose, and now command version is: %s", cliVersion)
 	}
 	appName := pkgJson.GetPackageJsonName()
-	cmdGlobalEntry = withGlobalFlag(c, cliVersion, appName)
+	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
