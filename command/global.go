@@ -3,6 +3,7 @@ package command
 import (
 	"fmt"
 	"github.com/bar-counter/slog"
+	"github.com/bridgewwater/temp-golang-cli-fast/command/exit_cli"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/log"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
 	"github.com/urfave/cli/v2"
@@ -81,7 +82,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 	appName := pkgJson.GetPackageJsonName()
 	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
 	if err != nil {
-		return err
+		return exit_cli.ExitCodeErr(err)
 	}
 
 	return nil
@@ -96,7 +97,7 @@ func GlobalAction(c *cli.Context) error {
 
 	err := cmdGlobalEntry.globalExec()
 	if err != nil {
-		return err
+		return exit_cli.ExitCodeF("run GlobalAction err: %v", err)
 	}
 	return nil
 }
