@@ -35,25 +35,35 @@ func CmdGlobalEntry() *GlobalCommand {
 	return cmdGlobalEntry
 }
 
-// GlobalAction
-// do command Action flag.
-func GlobalAction(c *cli.Context) error {
-	if cmdGlobalEntry == nil {
-		panic(fmt.Errorf("not init GlobalBeforeAction success to new cmdGlobalEntry"))
-	}
+// globalExec
+//
+//	do global command exec
+func (c *GlobalCommand) globalExec() error {
 
 	slog.Debug("-> start GlobalAction")
 
-	err := cmdGlobalEntry.globalExec()
-	if err != nil {
-		return err
-	}
 	return nil
 }
 
-func (c *GlobalCommand) globalExec() error {
+// withGlobalFlag
+//
+// bind global flag to globalExec
+func withGlobalFlag(c *cli.Context, cliVersion, cliName string) *GlobalCommand {
+	slog.Debug("-> withGlobalFlag")
 
-	return nil
+	isVerbose := c.Bool("verbose")
+	config := GlobalConfig{
+		LogLevel:      c.String("config.log_level"),
+		TimeoutSecond: c.Uint("config.timeout_second"),
+	}
+
+	p := GlobalCommand{
+		Name:    cliName,
+		Version: cliVersion,
+		Verbose: isVerbose,
+		RootCfg: config,
+	}
+	return &p
 }
 
 // GlobalBeforeAction
@@ -74,6 +84,20 @@ func GlobalBeforeAction(c *cli.Context) error {
 	return nil
 }
 
+// GlobalAction
+// do command Action flag.
+func GlobalAction(c *cli.Context) error {
+	if cmdGlobalEntry == nil {
+		panic(fmt.Errorf("not init GlobalBeforeAction success to new cmdGlobalEntry"))
+	}
+
+	err := cmdGlobalEntry.globalExec()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // GlobalAfterAction
 //
 //	do command Action after flag global.
@@ -85,21 +109,4 @@ func GlobalAfterAction(c *cli.Context) error {
 		slog.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
 	}
 	return nil
-}
-
-func withGlobalFlag(c *cli.Context, cliVersion, cliName string) *GlobalCommand {
-	isVerbose := c.Bool("verbose")
-
-	config := GlobalConfig{
-		LogLevel:      c.String("config.log_level"),
-		TimeoutSecond: c.Uint("config.timeout_second"),
-	}
-
-	p := GlobalCommand{
-		Name:    cliName,
-		Version: cliVersion,
-		Verbose: isVerbose,
-		RootCfg: config,
-	}
-	return &p
 }

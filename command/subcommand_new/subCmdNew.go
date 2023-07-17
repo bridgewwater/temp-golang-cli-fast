@@ -19,6 +19,7 @@ type NewCommand struct {
 }
 
 func (n *NewCommand) Exec() error {
+	slog.Debugf("-> Exec subCommand [ %s ]", commandName)
 
 	return nil
 }
@@ -39,6 +40,8 @@ func flag() []cli.Flag {
 }
 
 func withEntry(c *cli.Context) (*NewCommand, error) {
+	slog.Debugf("-> withEntry subCommand [ %s ]", commandName)
+
 	if c.Bool("lib") {
 		slog.Info("new lib mode")
 	}
@@ -51,7 +54,7 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 }
 
 func action(c *cli.Context) error {
-	slog.Debugf("SubCommand [ %s ] start", commandName)
+	slog.Debugf("-> Sub Command action [ %s ] start", commandName)
 	entry, err := withEntry(c)
 	if err != nil {
 		return err
