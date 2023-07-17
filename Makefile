@@ -178,17 +178,15 @@ else
 endif
 
 devInstallLocal: cleanBuild buildMain
-ifeq (${GOPATH},)
-	$(error env:GOPATH is not set can not install to local)
+ifeq ($(shell go env GOPATH),)
+	$(error can not get go env GOPATH)
 endif
-	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
-	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${GOPATH}/bin
 ifeq ($(OS),windows)
-	$(info -> notes: install ${GOPATH}\bin\${ENV_ROOT_BUILD_BIN_NAME}.exe)
-	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${GOPATH}\bin
+	$(info -> notes: install $(subst /,\,$(shell go env GOPATH)/bin/${ENV_ROOT_BUILD_BIN_NAME}.exe))
+	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe $(shell go env GOPATH)\bin
 else
 	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
-	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${GOPATH}/bin
+	@cp ${ENV_ROOT_BUILD_BIN_PATH} $(shell go env GOPATH)/bin
 endif
 
 run: cleanBuild buildMain
@@ -234,9 +232,9 @@ endif
 	@echo "~> make devHelp             - run as develop mode show help"
 	@echo "~> make dev                 - run as develop mode"
 ifeq ($(OS),Windows_NT)
-	@echo "~> make devInstallLocal     - install at $(subst /,\,${GOPATH}/bin)"
+	@echo "~> make devInstallLocal     - install at $(subst /,\,$(shell go env GOPATH)/bin)"
 else
-	@echo "~> make devInstallLocal     - install at ${GOPATH}/bin"
+	@echo "~> make devInstallLocal     - install at $(shell go env GOPATH)/bin"
 endif
 	@echo "~> make run                 - run as ordinary mode"
 
