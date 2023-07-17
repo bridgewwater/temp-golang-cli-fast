@@ -163,7 +163,7 @@ endif
 
 devHelp: export CLI_VERBOSE=false
 devHelp: cleanBuild buildMain
-ifeq ($(OS),windows)
+ifeq ($(OS),Windows_NT)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_HELP_ARGS}
 else
 	${ENV_ROOT_BUILD_BIN_PATH} ${ENV_RUN_INFO_HELP_ARGS}
@@ -171,7 +171,7 @@ endif
 
 dev: export CLI_VERBOSE=true
 dev: cleanBuild buildMain
-ifeq ($(OS),windows)
+ifeq ($(OS),Windows_NT)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_ARGS}
 else
 	${ENV_ROOT_BUILD_BIN_PATH} ${ENV_RUN_INFO_ARGS}
@@ -181,9 +181,9 @@ devInstallLocal: cleanBuild buildMain
 ifeq ($(shell go env GOPATH),)
 	$(error can not get go env GOPATH)
 endif
-ifeq ($(OS),windows)
-	$(info -> notes: install $(subst /,\,$(shell go env GOPATH)/bin/${ENV_ROOT_BUILD_BIN_NAME}.exe))
-	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe $(shell go env GOPATH)\bin
+ifeq ($(OS),Windows_NT)
+	$(info -> notes: install $(subst /,\,${ENV_GO_PATH}/bin/${ENV_ROOT_BUILD_BIN_NAME}.exe))
+	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe $(subst /,\,${ENV_GO_PATH}/bin)
 else
 	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
 	@cp ${ENV_ROOT_BUILD_BIN_PATH} $(shell go env GOPATH)/bin
@@ -191,7 +191,7 @@ endif
 
 run: cleanBuild buildMain
 	@echo "=> run start"
-ifeq ($(OS),windows)
+ifeq ($(OS),Windows_NT)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_ARGS}
 else
 	${ENV_ROOT_BUILD_BIN_PATH} ${ENV_RUN_INFO_ARGS}
@@ -232,7 +232,7 @@ endif
 	@echo "~> make devHelp             - run as develop mode show help"
 	@echo "~> make dev                 - run as develop mode"
 ifeq ($(OS),Windows_NT)
-	@echo "~> make devInstallLocal     - install at $(subst /,\,$(shell go env GOPATH)/bin)"
+	@echo "~> make devInstallLocal     - install at $(subst /,\,${ENV_GO_PATH}/bin)"
 else
 	@echo "~> make devInstallLocal     - install at $(shell go env GOPATH)/bin"
 endif
