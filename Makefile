@@ -186,7 +186,7 @@ ifeq ($(OS),Windows_NT)
 	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe $(subst /,\,${ENV_GO_PATH}/bin)
 else
 	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
-	@cp ${ENV_ROOT_BUILD_BIN_PATH} $(shell go env GOPATH)/bin
+	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${ENV_GO_PATH}/bin
 endif
 
 run: cleanBuild buildMain
@@ -234,7 +234,7 @@ endif
 ifeq ($(OS),Windows_NT)
 	@echo "~> make devInstallLocal     - install at $(subst /,\,${ENV_GO_PATH}/bin)"
 else
-	@echo "~> make devInstallLocal     - install at $(shell go env GOPATH)/bin"
+	@echo "~> make devInstallLocal     - install at ${ENV_GO_PATH}/bin"
 endif
 	@echo "~> make run                 - run as ordinary mode"
 
