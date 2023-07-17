@@ -82,7 +82,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 	appName := pkgJson.GetPackageJsonName()
 	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
 	if err != nil {
-		return exit_cli.ExitCodeErr(err)
+		return exit_cli.Err(err)
 	}
 
 	return nil
@@ -97,7 +97,7 @@ func GlobalAction(c *cli.Context) error {
 
 	err := cmdGlobalEntry.globalExec()
 	if err != nil {
-		return exit_cli.ExitCodeF("run GlobalAction err: %v", err)
+		return exit_cli.Format("run GlobalAction err: %v", err)
 	}
 	return nil
 }
