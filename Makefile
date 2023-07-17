@@ -150,7 +150,7 @@ ifeq ($(ENV_DIST_GO_OS),windows)
 	-a \
 	-tags netgo \
 	-ldflags '-w -s --extldflags "-static -fpic"' \
-	-o $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_ROOT_BUILD_ENTRANCE}
+	-o ${ENV_ROOT_BUILD_BIN_PATH}.exe ${ENV_ROOT_BUILD_ENTRANCE}
 	@echo "-> finish build out path: $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe"
 else
 	@GOOS=$(ENV_DIST_GO_OS) GOARCH=$(ENV_DIST_GO_ARCH) go build \
