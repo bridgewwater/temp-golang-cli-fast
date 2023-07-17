@@ -134,7 +134,7 @@ style: modTidy modVerify modFmt modLintRun
 ci: modTidy modVerify modFmt modVet modLintRun test
 
 buildMain:
-	@echo "-> start build local OS"
+	@echo "-> start build local OS: ${PLATFORM} ${OS_BIT}"
 ifeq ($(OS),Windows_NT)
 	@go build -o $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_ROOT_BUILD_ENTRANCE}
 	@echo "-> finish build out path: $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe"
@@ -175,6 +175,20 @@ ifeq ($(OS),windows)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_ARGS}
 else
 	${ENV_ROOT_BUILD_BIN_PATH} ${ENV_RUN_INFO_ARGS}
+endif
+
+devInstallLocal: cleanBuild buildMain
+ifeq (${GOPATH},)
+	$(error env:GOPATH is not set can not install to local)
+endif
+	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
+	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${GOPATH}/bin
+ifeq ($(OS),windows)
+	$(info -> notes: install ${GOPATH}\bin\${ENV_ROOT_BUILD_BIN_NAME}.exe)
+	@cp $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${GOPATH}\bin
+else
+	$(info -> notes: install ${GOPATH}/bin/${ENV_ROOT_BUILD_BIN_NAME})
+	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${GOPATH}/bin
 endif
 
 run: cleanBuild buildMain
@@ -219,6 +233,11 @@ endif
 	@echo "~> make style               - run local code fmt and style check"
 	@echo "~> make devHelp             - run as develop mode show help"
 	@echo "~> make dev                 - run as develop mode"
+ifeq ($(OS),Windows_NT)
+	@echo "~> make devInstallLocal     - install at $(subst /,\,${GOPATH}/bin)"
+else
+	@echo "~> make devInstallLocal     - install at ${GOPATH}/bin"
+endif
 	@echo "~> make run                 - run as ordinary mode"
 
 help: helpGoMod helpGoTest helpGoDist helpDocker helpProjectRoot
