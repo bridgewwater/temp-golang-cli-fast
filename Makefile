@@ -240,4 +240,4 @@ endif
 
 help: helpGoMod helpGoTest helpGoDist helpDocker helpProjectRoot
 	@echo ""
-	@echo "-- more info see Makefile include: MakeGoMod.mk MakeGoTest.mk MakeGoTestIntegration.mk MakeGoDist.mk MakeDockerRun.mk MakeGoAction.mk --"
+	@echo "-- more info see Makefile include: MakeGoMod.mk MakeGoTest.mk MakeGoTestIntegration.mk MakeGoDist.mk MakeDocker.mk --"

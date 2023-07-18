@@ -54,6 +54,8 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 | https://github.com/bar-counter/slog | v1.4.0  |
 | https://github.com/urfave/cli/      | v2.23.7 |
 
+- more libs see [go.mod](https://github.com/bridgewwater/temp-golang-cli-fast/blob/main/go.mod)
+
 ## usage
 
 ```bash
