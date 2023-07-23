@@ -1,28 +1,28 @@
-name: go-release-plarform
+name: go-release-platform
 
 on:
   workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
     inputs:
+      verison_name:
+        description: 'most of this use tag name'
+        default: ''
+        required: false
+        type: string
       upload_artifact_name:
         description: 'upload artifact name'
         default: ''
         required: false
         type: string
-      verison_name:
-        escription:
-        default: ''
-        required: false
-        type: string
 
 env:
-  DIST_BINARY_NAME: temp-golang-cli-fast
-  DIST_BUILD_ENTRANCE: cmd/temp-golang-cli-fast/main.go
+  DIST_BINARY_NAME: temp-golang-cli-fast # to change your binary name, windows will auto add .exe
+  DIST_BUILD_ENTRANCE: cmd/temp-golang-cli-fast/main.go # to change your build entrance
 
 permissions:
   contents: write
 
 jobs:
-  go-release-plarform:
+  go-release-platform:
     strategy:
       matrix:
         # You can add more, for any target you'd like! target list see: go tool dist list
@@ -79,6 +79,7 @@ jobs:
           # add more resource to archive
           mv doc/cmd.md "$dirname"
 
+          # archive and hash
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
             7z a "$dirname.zip" "$dirname"
             certutil -hashfile "$dirname.zip" SHA256 >> "$dirname.zip.sha256"
@@ -109,4 +110,4 @@ jobs:
           if-no-files-found: error
           path: |
             ${{ env.ASSET }}
-            ${{ env.WORK_DIR }}/${{ env.ASSET }}.sha256
+            ${{ env.ASSET }}.sha256
