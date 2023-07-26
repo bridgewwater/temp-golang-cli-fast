@@ -23,8 +23,8 @@ func NewCliApp() *cli.App {
 	app.Description = pkgJson.GetPackageJsonDescription()
 	year := time.Now().Year()
 	jsonAuthor := pkgJson.GetPackageJsonAuthor()
-	app.Copyright = fmt.Sprintf("© %s-%d %s by verson: %s",
-		constant.CopyrightStartYear, year, jsonAuthor.Name, runtime.Version())
+	app.Copyright = fmt.Sprintf("© %s-%d %s by: %s, run on %s %s",
+		constant.CopyrightStartYear, year, jsonAuthor.Name, runtime.Version(), runtime.GOOS, runtime.GOARCH)
 	author := &cli.Author{
 		Name:  jsonAuthor.Name,
 		Email: jsonAuthor.Email,
