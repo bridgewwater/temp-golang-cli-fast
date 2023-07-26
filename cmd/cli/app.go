@@ -8,6 +8,7 @@ import (
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
 	"github.com/bridgewwater/temp-golang-cli-fast/utils/urfave_cli"
 	"github.com/urfave/cli/v2"
+	"runtime"
 	"time"
 )
 
@@ -22,7 +23,8 @@ func NewCliApp() *cli.App {
 	app.Description = pkgJson.GetPackageJsonDescription()
 	year := time.Now().Year()
 	jsonAuthor := pkgJson.GetPackageJsonAuthor()
-	app.Copyright = fmt.Sprintf("© %s-%d %s", constant.CopyrightStartYear, year, jsonAuthor.Name)
+	app.Copyright = fmt.Sprintf("© %s-%d %s by verson: %s",
+		constant.CopyrightStartYear, year, jsonAuthor.Name, runtime.Version())
 	author := &cli.Author{
 		Name:  jsonAuthor.Name,
 		Email: jsonAuthor.Email,
