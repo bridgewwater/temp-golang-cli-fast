@@ -13,7 +13,7 @@
 
 ```bash
 $ curl -L --fail https://raw.githubusercontent.com/bridgewwater/temp-golang-cli-fast/main/temp-golang-cli-fast
-# let template-golang-lib file folder under $PATH
+# let temp-golang-cli-fast file folder under $PATH
 $ chmod +x temp-golang-cli-fast
 # see how to use
 $ temp-golang-cli-fast -h
