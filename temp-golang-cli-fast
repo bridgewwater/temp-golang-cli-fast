@@ -39,7 +39,7 @@ ARG=$1
 if [[ $# -eq 1 ]]; then
   if [[ "$ARG" =~ "-h" ]]; then
     Usage
-    exit_cli 0
+    exit 0
   fi
 fi
 
@@ -62,7 +62,7 @@ pE() {
 checkFuncBack() {
   if [ ! $? -eq 0 ]; then
     echo -e "\033[;31mRun [ $1 ] error exit code 1\033[0m"
-    exit_cli 1
+    exit 1
     # else
     #   echo -e "\033[;30mRun [ $1 ] success\033[0m"
   fi
@@ -73,7 +73,7 @@ checkBinary() {
   checkFuncBack "which $1"
   if [ ! -n "$evn_checker" ]; then
     echo -e "\033[;31mCheck event [ $1 ] error exit\033[0m"
-    exit_cli 1
+    exit 1
     # else
     #   echo -e "\033[;32mCli [ $1 ] event check success\033[0m\n-> \033[;34m$1 at Path: ${evn_checker}\033[0m"
   fi
@@ -205,18 +205,18 @@ checkBinary go
 
 if [[ $# -lt 1 ]]; then
   echo -e "\033[;31mCLI error!\033[0m see ${shell_run_name} -h"
-  exit_cli 1
+  exit 1
 fi
 
 new_project=$1
 if [ ! -n "${new_project}" ]; then
   echo -e "\033[;31mError you must set new_project at first!\033[0m"
-  exit_cli 1
+  exit 1
 fi
 
 if [ -d ${new_project} ]; then
   echo -e "\033[;31mError new new project is exist -> ${new_project}\033[0m"
-  exit_cli 1
+  exit 1
 fi
 
 if [[ -n $2 ]]; then
