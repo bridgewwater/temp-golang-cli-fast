@@ -1,12 +1,12 @@
 [![ci](https://github.com/bridgewwater/temp-golang-cli-fast/workflows/ci/badge.svg?branch=main)](https://github.com/bridgewwater/temp-golang-cli-fast/actions/workflows/ci.yml)
-[![GitHub license](https://img.shields.io/github/license/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast)
+
 [![go mod version](https://img.shields.io/github/go-mod/go-version/bridgewwater/temp-golang-cli-fast?label=go.mod)](https://github.com/bridgewwater/temp-golang-cli-fast)
 [![GoDoc](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast?status.png)](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast)
 [![goreportcard](https://goreportcard.com/badge/github.com/bridgewwater/temp-golang-cli-fast)](https://goreportcard.com/report/github.com/bridgewwater/temp-golang-cli-fast)
+
+[![GitHub license](https://img.shields.io/github/license/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast)
 [![codecov](https://codecov.io/gh/bridgewwater/temp-golang-cli-fast/branch/main/graph/badge.svg)](https://codecov.io/gh/bridgewwater/temp-golang-cli-fast)
-[![docker version semver](https://img.shields.io/docker/v/bridgewwater/temp-golang-cli-fast?sort=semver)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast/tags?page=1&ordering=last_updated)
-[![docker image size](https://img.shields.io/docker/image-size/bridgewwater/temp-golang-cli-fast)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast)
-[![docker pulls](https://img.shields.io/docker/pulls/bridgewwater/temp-golang-cli-fast)](https://hub.docker.com/r/bridgewwater/temp-golang-cli-fast/tags?page=1&ordering=last_updated)
+[![GitHub latest SemVer tag)](https://img.shields.io/github/v/tag/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast/tags)
 [![GitHub release)](https://img.shields.io/github/v/release/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast/releases)
 
 ### cli tools to init project fast
