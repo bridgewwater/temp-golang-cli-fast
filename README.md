@@ -1,4 +1,5 @@
 [![ci](https://github.com/bridgewwater/temp-golang-cli-fast/workflows/ci/badge.svg?branch=main)](https://github.com/bridgewwater/temp-golang-cli-fast/actions/workflows/ci.yml)
+[![TravisBuildStatus](https://api.travis-ci.com/bridgewwater/temp-golang-cli-fast.svg?branch=main)](https://travis-ci.com/bridgewwater/temp-golang-cli-fast)
 
 [![go mod version](https://img.shields.io/github/go-mod/go-version/bridgewwater/temp-golang-cli-fast?label=go.mod)](https://github.com/bridgewwater/temp-golang-cli-fast)
 [![GoDoc](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast?status.png)](https://godoc.org/github.com/bridgewwater/temp-golang-cli-fast)
