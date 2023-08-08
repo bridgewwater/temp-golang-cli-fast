@@ -3,9 +3,10 @@ package command
 import (
 	"fmt"
 	"github.com/bar-counter/slog"
-	"github.com/bridgewwater/temp-golang-cli-fast/command/exit_cli"
-	"github.com/bridgewwater/temp-golang-cli-fast/utils/log"
-	"github.com/bridgewwater/temp-golang-cli-fast/utils/pkgJson"
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/log"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkgJson"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli/cli_exit_urfave"
 	"github.com/urfave/cli/v2"
 )
 
@@ -52,7 +53,7 @@ func (c *GlobalCommand) globalExec() error {
 func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand, error) {
 	slog.Debug("-> withGlobalFlag")
 
-	isVerbose := c.Bool("verbose")
+	isVerbose := c.Bool(constant.NameKeyCliVerbose)
 	config := GlobalConfig{
 		LogLevel:      c.String("config.log_level"),
 		TimeoutSecond: c.Uint("config.timeout_second"),
@@ -70,7 +71,7 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand,
 // GlobalBeforeAction
 // do command Action before flag global.
 func GlobalBeforeAction(c *cli.Context) error {
-	isVerbose := c.Bool("verbose")
+	isVerbose := c.Bool(constant.NameKeyCliVerbose)
 	err := log.InitLog(isVerbose, !isVerbose)
 	if err != nil {
 		panic(err)
@@ -82,7 +83,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 	appName := pkgJson.GetPackageJsonName()
 	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
 	if err != nil {
-		return exit_cli.Err(err)
+		return cli_exit_urfave.Err(err)
 	}
 
 	return nil
@@ -97,7 +98,7 @@ func GlobalAction(c *cli.Context) error {
 
 	err := cmdGlobalEntry.globalExec()
 	if err != nil {
-		return exit_cli.Format("run GlobalAction err: %v", err)
+		return cli_exit_urfave.Format("run GlobalAction err: %v", err)
 	}
 	return nil
 }
@@ -108,7 +109,7 @@ func GlobalAction(c *cli.Context) error {
 //
 //nolint:golint,unused
 func GlobalAfterAction(c *cli.Context) error {
-	isVerbose := c.Bool("verbose")
+	isVerbose := c.Bool(constant.NameKeyCliVerbose)
 	if isVerbose {
 		slog.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
 	}

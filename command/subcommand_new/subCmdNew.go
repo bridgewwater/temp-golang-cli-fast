@@ -4,7 +4,7 @@ import (
 	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
-	"github.com/bridgewwater/temp-golang-cli-fast/utils/urfave_cli"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli"
 	"github.com/urfave/cli/v2"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
-	"github.com/bridgewwater/temp-golang-cli-fast/utils/env_kit"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/env_kit"
 )
 
 // InitLog

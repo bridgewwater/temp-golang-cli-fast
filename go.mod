@@ -1,6 +1,6 @@
 module github.com/bridgewwater/temp-golang-cli-fast
 
-go 1.18
+go 1.19
 
 require (
 	github.com/bar-counter/slog v1.4.0

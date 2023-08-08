@@ -8,7 +8,7 @@ ROOT_NAME?=temp-golang-cli-fast
 
 ## MakeDocker.mk settings start
 ROOT_OWNER ?=bridgewwater
-ROOT_PARENT_SWITCH_TAG=1.18.10-buster
+ROOT_PARENT_SWITCH_TAG=1.19.10-buster
 # for image local build
 INFO_TEST_BUILD_DOCKER_PARENT_IMAGE=golang
 # for image running
@@ -189,6 +189,10 @@ else
 	@cp ${ENV_ROOT_BUILD_BIN_PATH} ${ENV_GO_PATH}/bin
 endif
 
+runHelp: export CLI_VERBOSE=false
+runHelp:
+	go run -v ${ENV_ROOT_BUILD_ENTRANCE} ${ENV_RUN_INFO_HELP_ARGS}
+
 run: cleanBuild buildMain
 	@echo "=> run start"
 ifeq ($(OS),Windows_NT)
@@ -236,6 +240,7 @@ ifeq ($(OS),Windows_NT)
 else
 	@echo "~> make devInstallLocal     - install at ${ENV_GO_PATH}/bin"
 endif
+	@echo "~> make runHelp             - run use ${ENV_RUN_INFO_HELP_ARGS}"
 	@echo "~> make run                 - run as ordinary mode"
 
 help: helpGoMod helpGoTest helpGoDist helpDocker helpProjectRoot

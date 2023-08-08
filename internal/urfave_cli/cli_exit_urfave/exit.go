@@ -1,4 +1,4 @@
-package exit_cli
+package cli_exit_urfave
 
 import (
 	"fmt"

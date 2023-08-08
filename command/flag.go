@@ -12,7 +12,7 @@ import (
 func GlobalFlag() []cli.Flag {
 	return []cli.Flag{
 		&cli.BoolFlag{
-			Name:    "verbose",
+			Name:    constant.NameKeyCliVerbose,
 			Usage:   "open cli verbose mode",
 			Value:   false,
 			EnvVars: []string{constant.EnvKeyCliVerbose},
@@ -23,15 +23,17 @@ func GlobalFlag() []cli.Flag {
 func HideGlobalFlag() []cli.Flag {
 	return []cli.Flag{
 		&cli.UintFlag{
-			Name:    "config.timeout_second",
-			Usage:   "command timeout setting second. default 10",
+			Name:    constant.NamePluginTimeOut,
+			Usage:   "command timeout setting second",
 			Hidden:  true,
 			Value:   10,
 			EnvVars: []string{constant.EnvKeyCliTimeoutSecond},
 		},
 		&cli.StringFlag{
-			Name:    "config.log_level",
-			Usage:   fmt.Sprintf("command clog level. default %s", slog.INFO),
+			Name: constant.NameLogLevel,
+			Usage: fmt.Sprintf("command clog level. support [ %s, %s, %s, %s ]",
+				slog.DEBUG, slog.INFO, slog.WARN, slog.ERROR,
+			),
 			Value:   slog.INFO,
 			Hidden:  true,
 			EnvVars: []string{constant.EnvLogLevel},
