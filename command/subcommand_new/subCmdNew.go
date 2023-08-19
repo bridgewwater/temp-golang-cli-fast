@@ -49,6 +49,7 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 	return &NewCommand{
 		isDebug: globalEntry.Verbose,
 
+		// todo: if not use platform config, remove this
 		PlatformConfig: constant.BindPlatformConfig(c),
 	}, nil
 }
@@ -70,7 +71,10 @@ func Command() []*cli.Command {
 			Name:   commandName,
 			Usage:  "",
 			Action: action,
-			Flags:  urfave_cli.UrfaveCliAppendCliFlag(flag(), constant.PlatformFlags()),
+
+			// todo: if not use platform config, remove this
+			//Flags: flag(),
+			Flags: urfave_cli.UrfaveCliAppendCliFlag(flag(), constant.PlatformFlags()),
 		},
 	}
 }

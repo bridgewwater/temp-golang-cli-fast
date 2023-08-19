@@ -55,8 +55,8 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand,
 
 	isVerbose := c.Bool(constant.NameKeyCliVerbose)
 	config := GlobalConfig{
-		LogLevel:      c.String("config.log_level"),
-		TimeoutSecond: c.Uint("config.timeout_second"),
+		LogLevel:      c.String(constant.NameLogLevel),
+		TimeoutSecond: c.Uint(constant.NamePluginTimeOut),
 	}
 
 	p := GlobalCommand{
