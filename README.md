@@ -191,7 +191,7 @@ $ make helpDocker
 
 ### log
 
-- cli log use [github.com/bridgewwater/go-logger](https://github.com/bar-counter/slog)
+- cli log use [github.com/bar-counter/slog](https://github.com/bar-counter/slog)
     - open debug log by env `CLI_VERBOSE=true` or global flag `--verbose`
 
 ```go
