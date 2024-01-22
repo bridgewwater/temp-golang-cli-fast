@@ -43,7 +43,7 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 ## env
 
 - minimum go version: go 1.19
-- change `go 1.19`, `^1.19`, `1.19.10-buster`, `1.19.10` to new go version
+- change `go 1.19`, `^1.19`, `1.19.13` to new go version
 
 ### libs
 

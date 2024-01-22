@@ -8,12 +8,12 @@ permissions:
 
 jobs:
   golang-ci:
-    name: glang-ci
+    name: golang-ci
     strategy:
       matrix:
         go:
           - '^1.19'
-          - '1.19.12'
+          - '1.19.13'
         os:
           - macos-latest
           - windows-latest
