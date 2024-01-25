@@ -84,7 +84,7 @@ in go mod project
 $ go env -w GOPRIVATE='github.com'
 # use ssh proxy
 # set ssh-key to use ssh as http
-$ git config --global url."git@github.com:".insteadOf "http://github.com/"
+$ git config --global url."git@github.com:".insteadOf "https://github.com/"
 # or use PRIVATE-TOKEN
 # set PRIVATE-TOKEN as gitlab or gitea
 $ git config --global http.extraheader "PRIVATE-TOKEN: {PRIVATE-TOKEN}"
@@ -93,7 +93,7 @@ $ git config --global url."ssh://github.com/".insteadOf "https://github.com/"
 
 # before above global settings
 # test version info
-$ git ls-remote -q http://github.com/bridgewwater/temp-golang-cli-fast.git
+$ git ls-remote -q https://github.com/bridgewwater/temp-golang-cli-fast.git
 
 # test depends see full version
 $ go list -mod readonly -v -m -versions github.com/bridgewwater/temp-golang-cli-fast
