@@ -6,14 +6,12 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
-	"math/rand"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strconv"
 	"strings"
 	"testing"
-	"time"
 )
 
 const (
@@ -462,28 +460,6 @@ func setEnvInt64(t *testing.T, key string, val int64) {
 	if err != nil {
 		t.Fatalf("set env key [%v] int64 err: %v", key, err)
 	}
-}
-
-// randomStr
-//
-//	new random string by cnt
-func randomStr(cnt uint) string {
-	var letters = []byte("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
-	result := make([]byte, cnt)
-	keyL := len(letters)
-	rand.Seed(time.Now().Unix())
-	for i := range result {
-		result[i] = letters[rand.Intn(keyL)]
-	}
-	return string(result)
-}
-
-// randomInt
-//
-//	new random int by max
-func randomInt(max int) int {
-	rand.Seed(time.Now().Unix())
-	return rand.Intn(max)
 }
 
 // test case file tools end
