@@ -5,16 +5,19 @@ import (
 	"time"
 )
 
+const randomStrLetterCnt = 62
+
+var randomStrLetters = []byte("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+
 // randomStr
 //
 //	new random string by cnt
 func randomStr(cnt uint) string {
-	var letters = []byte("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
 	result := make([]byte, cnt)
-	keyL := len(letters)
-	rand.New(rand.NewSource(time.Now().UnixNano()))
+	rs := rand.New(rand.NewSource(time.Now().Unix()))
 	for i := range result {
-		result[i] = letters[rand.Intn(keyL)]
+		index := rs.Intn(randomStrLetterCnt)
+		result[i] = randomStrLetters[index]
 	}
 	return string(result)
 }
@@ -23,6 +26,6 @@ func randomStr(cnt uint) string {
 //
 //	new random int by max
 func randomInt(max int) int {
-	rand.New(rand.NewSource(time.Now().UnixNano()))
-	return rand.Intn(max)
+	rs := rand.New(rand.NewSource(time.Now().Unix()))
+	return rs.Intn(max)
 }

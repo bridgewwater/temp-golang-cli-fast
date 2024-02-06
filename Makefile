@@ -8,13 +8,13 @@ ROOT_NAME?=temp-golang-cli-fast
 
 ## MakeDocker.mk settings start
 ROOT_OWNER ?=bridgewwater
-ROOT_PARENT_SWITCH_TAG=1.19.13
+ROOT_PARENT_SWITCH_TAG =1.19.13
 # for image local build
-INFO_TEST_BUILD_DOCKER_PARENT_IMAGE=golang
+INFO_TEST_BUILD_DOCKER_PARENT_IMAGE =golang
 # for image running
-INFO_BUILD_DOCKER_FROM_IMAGE=alpine:3.17
-INFO_BUILD_DOCKER_FILE=Dockerfile
-INFO_TEST_BUILD_DOCKER_FILE=Dockerfile.s6
+INFO_BUILD_DOCKER_FROM_IMAGE =alpine:3.17
+INFO_BUILD_DOCKER_FILE =Dockerfile
+INFO_TEST_BUILD_DOCKER_FILE =Dockerfile.s6
 ## MakeDocker.mk settings end
 
 ## run info start
@@ -133,6 +133,12 @@ style: modTidy modVerify modFmt modLintRun
 
 ci: modTidy modVerify modFmt modVet modLintRun test
 
+ciTestBenchmark: modTidy modVerify testBenchmark
+
+ciCoverageShow: modTidy modVerify modVet testCoverage testCoverageShow
+
+ciAll: ci ciTestBenchmark ciCoverageShow
+
 buildMain:
 	@echo "-> start build local OS: ${PLATFORM} ${OS_BIT}"
 ifeq ($(OS),Windows_NT)
@@ -232,8 +238,11 @@ endif
 	@echo "~> make testCoverageBrowser - see coverage at browser --invert-match by config"
 	@echo "~> make testBenchmark       - run go test benchmark case all"
 	@echo "~> make ci                  - run CI tools tasks"
+	@echo "~> make ciTestBenchmark     - run CI tasks as test benchmark"
+	@echo "~> make ciCoverageShow      - run CI tasks as test coverage and show"
+	@echo "~> make ciAll               - run CI tasks all"
 	@echo "~> make style               - run local code fmt and style check"
-	@echo "~> make devHelp             - run as develop mode show help"
+	@echo "~> make devHelp             - run as develop mode see help with ${ENV_RUN_INFO_HELP_ARGS}"
 	@echo "~> make dev                 - run as develop mode"
 ifeq ($(OS),Windows_NT)
 	@echo "~> make devInstallLocal     - install at $(subst /,\,${ENV_GO_PATH}/bin)"
