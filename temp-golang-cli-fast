@@ -310,7 +310,7 @@ if [ ! -n "${readme_package_fix}" ];then
   pI "readme_package_fix is empty"
 else
   for readme_package_fix_item in ${readme_package_fix[@]}; do
-    pD "try fix README.md package: ${readme_package_fix_item}"
+#    pD "try fix README.md package: ${readme_package_fix_item}"
     findFileReplaceByRegular ${new_project} "README.md" "${new_repo_host}\/${readme_package_fix_item}" "github.com\/${readme_package_fix_item}"
   done
 fi
