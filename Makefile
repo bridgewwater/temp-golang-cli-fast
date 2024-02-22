@@ -14,7 +14,7 @@ INFO_TEST_BUILD_DOCKER_PARENT_IMAGE =golang
 # for image running
 INFO_BUILD_DOCKER_FROM_IMAGE =alpine:3.17
 INFO_BUILD_DOCKER_FILE =Dockerfile
-INFO_TEST_BUILD_DOCKER_FILE =Dockerfile.s6
+INFO_TEST_BUILD_DOCKER_FILE =build.dockerfile
 ## MakeDocker.mk settings end
 
 ## run info start
