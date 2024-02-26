@@ -263,9 +263,9 @@ replaceFileByRegular ${new_project}/go.mod ${temple_repo_host}\/${temple_group}\
 replaceFileByRegular ${new_project}/Dockerfile ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/Dockerfile ${temple_group} ${new_repo_group}
 replaceFileByRegular ${new_project}/Dockerfile ${temple_name} ${new_project}
-replaceFileByRegular ${new_project}/Dockerfile.s6 ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
-replaceFileByRegular ${new_project}/Dockerfile.s6 ${temple_group} ${new_repo_group}
-replaceFileByRegular ${new_project}/Dockerfile.s6 ${temple_name} ${new_project}
+replaceFileByRegular ${new_project}/build.dockerfile ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
+replaceFileByRegular ${new_project}/build.dockerfile ${temple_group} ${new_repo_group}
+replaceFileByRegular ${new_project}/build.dockerfile ${temple_name} ${new_project}
 #replaceFileByRegular ${new_project}/docker-compose.yml ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/Makefile ${temple_group} ${new_repo_group}
 replaceFileByRegular ${new_project}/Makefile ${temple_name} ${new_project}
@@ -310,7 +310,7 @@ if [ ! -n "${readme_package_fix}" ];then
   pI "readme_package_fix is empty"
 else
   for readme_package_fix_item in ${readme_package_fix[@]}; do
-#    pD "try fix README.md package: ${readme_package_fix_item}"
+    # pD "try fix README.md package: ${readme_package_fix_item}"
     findFileReplaceByRegular ${new_project} "README.md" "${new_repo_host}\/${readme_package_fix_item}" "github.com\/${readme_package_fix_item}"
   done
 fi
