@@ -7,7 +7,7 @@ require (
 	github.com/bar-counter/slog v1.4.0
 	github.com/gookit/color v1.5.4
 	github.com/sebdah/goldie/v2 v2.5.3
-	github.com/sinlov-go/unittest-kit v1.0.0
+	github.com/sinlov-go/unittest-kit v1.1.0
 	github.com/stretchr/testify v1.8.4
 	github.com/urfave/cli/v2 v2.27.1
 )
