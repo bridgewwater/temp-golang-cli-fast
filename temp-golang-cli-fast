@@ -25,13 +25,13 @@ ${shell_run_name} can use fast init golang lib project with github
 
 default repo setting
   group/user: ${temple_group}
-  reop host : ${temple_repo_host}
+  repo host : ${temple_repo_host}
 
-Usage: ${shell_run_name} [newproject] [new group/user] [new host]
+Usage: ${shell_run_name} [new-project] [new group/user] [new host]
 
 Example:
-    ${shell_run_name} newgoprojt
-    ${shell_run_name} newgoprojt sinlov github.com
+    ${shell_run_name} new-project
+    ${shell_run_name} new-project sinlov github.com
 HELP
 }
 
