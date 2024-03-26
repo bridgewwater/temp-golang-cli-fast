@@ -5,7 +5,7 @@ import (
 	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/log"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkgJson"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli/cli_exit_urfave"
 	"github.com/urfave/cli/v2"
 )
@@ -76,11 +76,11 @@ func GlobalBeforeAction(c *cli.Context) error {
 	if err != nil {
 		panic(err)
 	}
-	cliVersion := pkgJson.GetPackageJsonVersionGoStyle(false)
+	cliVersion := pkg_kit.GetPackageJsonVersionGoStyle(false)
 	if isVerbose {
 		slog.Warnf("-> open verbose, and now command version is: %s", cliVersion)
 	}
-	appName := pkgJson.GetPackageJsonName()
+	appName := pkg_kit.GetPackageJsonName()
 	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
 	if err != nil {
 		return cli_exit_urfave.Err(err)

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/bridgewwater/temp-golang-cli-fast"
 	"github.com/bridgewwater/temp-golang-cli-fast/cmd/cli"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkgJson"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/gookit/color"
 	os "os"
 )
@@ -16,7 +16,7 @@ const (
 )
 
 func main() {
-	pkgJson.InitPkgJsonContent(temp_golang_cli_fast.PackageJson)
+	pkg_kit.InitPkgJsonContent(temp_golang_cli_fast.PackageJson)
 
 	app := cli.NewCliApp()
 

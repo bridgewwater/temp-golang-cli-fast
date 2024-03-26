@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/command/subcommand_new"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkgJson"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli/cli_exit_urfave"
 	"github.com/urfave/cli/v2"
@@ -21,14 +21,14 @@ func NewCliApp() *cli.App {
 	cli_exit_urfave.ChangeDefaultExitCode(defaultExitCode)
 	app := cli.NewApp()
 	app.EnableBashCompletion = true
-	app.Version = pkgJson.GetPackageJsonVersionGoStyle(false)
-	app.Name = pkgJson.GetPackageJsonName()
-	if pkgJson.GetPackageJsonHomepage() != "" {
-		app.Usage = fmt.Sprintf("see: %s", pkgJson.GetPackageJsonHomepage())
+	app.Version = pkg_kit.GetPackageJsonVersionGoStyle(false)
+	app.Name = pkg_kit.GetPackageJsonName()
+	if pkg_kit.GetPackageJsonHomepage() != "" {
+		app.Usage = fmt.Sprintf("see: %s", pkg_kit.GetPackageJsonHomepage())
 	}
-	app.Description = pkgJson.GetPackageJsonDescription()
+	app.Description = pkg_kit.GetPackageJsonDescription()
 	year := time.Now().Year()
-	jsonAuthor := pkgJson.GetPackageJsonAuthor()
+	jsonAuthor := pkg_kit.GetPackageJsonAuthor()
 	app.Copyright = fmt.Sprintf("© %s-%d %s by: %s, run on %s %s",
 		copyrightStartYear, year, jsonAuthor.Name, runtime.Version(), runtime.GOOS, runtime.GOARCH)
 	author := &cli.Author{
