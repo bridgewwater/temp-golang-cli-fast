@@ -11,9 +11,9 @@ const (
   "version": "1.2.3",
   "name": "mock",
   "author": {
-    "name": "bridgewwater",
-    "email": "bridgewwatergmppt@gmail.com",
-    "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
+    "name": "template-zoo",
+    "email": "template-zoogmppt@gmail.com",
+    "url": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli"
   }
 }
 `
@@ -22,12 +22,12 @@ const (
   "version": "v1.2.3",
   "name": "mock go style",
   "author": {
-    "name": "bridgewwater",
-    "email": "bridgewwatergmppt@gmail.com",
-    "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
+    "name": "template-zoo",
+    "email": "template-zoogmppt@gmail.com",
+    "url": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli"
   },
   "description": "mock go style",
-  "homepage": "https://github.com/bridgewwater/temp-golang-cli-fast#readme"
+  "homepage": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli#readme"
 }
 `
 )
@@ -145,23 +145,6 @@ func TestPanicPackageJsonLoadAuthor(t *testing.T) {
 		// verify TestPanicPackageJsonLoadAuthor
 		t.Fatalf("TestPanicPackageJsonLoadAuthor should panic")
 	}
-
-	errString = "pkg_kit parse package.json author email is empty"
-
-	if !assert.PanicsWithError(t, errString, func() {
-		// do TestPanicPackageJsonLoadAuthor
-		InitPkgJsonContent(`{
-  "name": "foo",
-  "version": "1.2.3",
-  "author": {
-    "name": "bridgewwater"
-  }
-}
-`)
-	}) {
-		// verify TestPanicPackageJsonLoadAuthor
-		t.Fatalf("TestPanicPackageJsonLoadAuthor should panic")
-	}
 }
 
 func TestGetPackageJsonName(t *testing.T) {
@@ -185,8 +168,8 @@ func TestGetPackageJsonAuthor(t *testing.T) {
 	// do GetPackageJsonAuthorName
 
 	// verify GetPackageJsonAuthorName
-	assert.Equal(t, "bridgewwater", GetPackageJsonAuthor().Name)
-	assert.Equal(t, "bridgewwatergmppt@gmail.com", GetPackageJsonAuthor().Email)
+	assert.Equal(t, "template-zoo", GetPackageJsonAuthor().Name)
+	assert.Equal(t, "template-zoogmppt@gmail.com", GetPackageJsonAuthor().Email)
 }
 func TestGetPackageJsonDescription(t *testing.T) {
 	t.Logf("~> mock GetPackageJsonDescription")
@@ -215,5 +198,5 @@ func TestGetPackageJsonHomepage(t *testing.T) {
 	assert.Equal(t, "", GetPackageJsonHomepage())
 
 	InitPkgJsonContent(jsonInfoGoStyle)
-	assert.Equal(t, "https://github.com/bridgewwater/temp-golang-cli-fast#readme", GetPackageJsonHomepage())
+	assert.Equal(t, "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli#readme", GetPackageJsonHomepage())
 }

@@ -13,7 +13,7 @@
 ### cli tools to init project fast
 
 ```bash
-$ curl -L --fail https://raw.githubusercontent.com/bridgewwater/temp-golang-cli-fast/main/temp-golang-cli-fast
+$ v=1.1.0; curl -L --fail https://raw.githubusercontent.com/bridgewwater/temp-golang-cli-fast/v$v/temp-golang-cli-fast -o temp-golang-cli-fast
 # let temp-golang-cli-fast file folder under $PATH
 $ chmod +x temp-golang-cli-fast
 # see how to use
@@ -198,10 +198,10 @@ $ make helpDocker
 package foo
 
 func action(c *cli.Context) error {
-	slog.Debug("SubCommand [ new ] start") // this not show at CLI_VERBOSE=false
+	d_log.Debug("SubCommand [ new ] start") // this not show at CLI_VERBOSE=false
 
 	if c.Bool("lib") {
-		slog.Info("new lib mode")
+		d_log.Info("new lib mode")
 	}
 	return nil
 }

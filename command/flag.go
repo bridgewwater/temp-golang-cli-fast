@@ -1,8 +1,6 @@
 package command
 
 import (
-	"fmt"
-	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
 	"github.com/urfave/cli/v2"
 )
@@ -28,15 +26,6 @@ func HideGlobalFlag() []cli.Flag {
 			Hidden:  true,
 			Value:   10,
 			EnvVars: []string{constant.EnvKeyCliTimeoutSecond},
-		},
-		&cli.StringFlag{
-			Name: constant.NameLogLevel,
-			Usage: fmt.Sprintf("command clog level. support [ %s, %s, %s, %s ]",
-				slog.DEBUG, slog.INFO, slog.WARN, slog.ERROR,
-			),
-			Value:   slog.INFO,
-			Hidden:  true,
-			EnvVars: []string{constant.EnvLogLevel},
 		},
 	}
 }

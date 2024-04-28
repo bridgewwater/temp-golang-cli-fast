@@ -11,9 +11,4 @@ const (
 	//	Provides the timeout second flag
 	EnvKeyCliTimeoutSecond = "CLI_CONFIG_TIMEOUT_SECOND"
 	NamePluginTimeOut      = "config.timeout_second"
-
-	// EnvLogLevel
-	//	env ENV_WEB_LOG_LEVEL default ""
-	EnvLogLevel  string = "CLI_LOG_LEVEL"
-	NameLogLevel string = "config.log_level"
 )

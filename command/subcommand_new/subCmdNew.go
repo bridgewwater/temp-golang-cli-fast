@@ -1,9 +1,9 @@
 package subcommand_new
 
 import (
-	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli"
 	"github.com/urfave/cli/v2"
 )
@@ -19,7 +19,7 @@ type NewCommand struct {
 }
 
 func (n *NewCommand) Exec() error {
-	slog.Debugf("-> Exec subCommand [ %s ]", commandName)
+	d_log.Debugf("-> Exec subCommand [ %s ]", commandName)
 
 	return nil
 }
@@ -40,10 +40,10 @@ func flag() []cli.Flag {
 }
 
 func withEntry(c *cli.Context) (*NewCommand, error) {
-	slog.Debugf("-> withEntry subCommand [ %s ]", commandName)
+	d_log.Debugf("-> withEntry subCommand [ %s ]", commandName)
 
 	if c.Bool("lib") {
-		slog.Info("new lib mode")
+		d_log.Info("new lib mode")
 	}
 	globalEntry := command.CmdGlobalEntry()
 	return &NewCommand{
@@ -55,7 +55,7 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 }
 
 func action(c *cli.Context) error {
-	slog.Debugf("-> Sub Command action [ %s ] start", commandName)
+	d_log.Debugf("-> Sub Command action [ %s ] start", commandName)
 	entry, err := withEntry(c)
 	if err != nil {
 		return err

@@ -2,16 +2,14 @@ package command
 
 import (
 	"fmt"
-	"github.com/bar-counter/slog"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/log"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli/cli_exit_urfave"
 	"github.com/urfave/cli/v2"
 )
 
 type GlobalConfig struct {
-	LogLevel      string
 	TimeoutSecond uint
 }
 
@@ -42,7 +40,7 @@ func CmdGlobalEntry() *GlobalCommand {
 //	do global command exec
 func (c *GlobalCommand) globalExec() error {
 
-	slog.Debug("-> start GlobalAction")
+	d_log.Debug("-> start GlobalAction")
 
 	return nil
 }
@@ -51,11 +49,10 @@ func (c *GlobalCommand) globalExec() error {
 //
 // bind global flag to globalExec
 func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand, error) {
-	slog.Debug("-> withGlobalFlag")
+	d_log.Debug("-> withGlobalFlag")
 
 	isVerbose := c.Bool(constant.NameKeyCliVerbose)
 	config := GlobalConfig{
-		LogLevel:      c.String(constant.NameLogLevel),
 		TimeoutSecond: c.Uint(constant.NamePluginTimeOut),
 	}
 
@@ -72,20 +69,21 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName string) (*GlobalCommand,
 // do command Action before flag global.
 func GlobalBeforeAction(c *cli.Context) error {
 	isVerbose := c.Bool(constant.NameKeyCliVerbose)
-	err := log.InitLog(isVerbose, !isVerbose)
-	if err != nil {
-		panic(err)
+	if isVerbose {
+		d_log.OpenDebug()
 	}
+
 	cliVersion := pkg_kit.GetPackageJsonVersionGoStyle(false)
 	if isVerbose {
-		slog.Warnf("-> open verbose, and now command version is: %s", cliVersion)
+		d_log.Warnf("-> open verbose, and now command version is: %s", cliVersion)
 	}
 	appName := pkg_kit.GetPackageJsonName()
-	cmdGlobalEntry, err = withGlobalFlag(c, cliVersion, appName)
+	cmdEntry, err := withGlobalFlag(c, cliVersion, appName)
 	if err != nil {
 		return cli_exit_urfave.Err(err)
 	}
 
+	cmdGlobalEntry = cmdEntry
 	return nil
 }
 
@@ -109,9 +107,8 @@ func GlobalAction(c *cli.Context) error {
 //
 //nolint:golint,unused
 func GlobalAfterAction(c *cli.Context) error {
-	isVerbose := c.Bool(constant.NameKeyCliVerbose)
-	if isVerbose {
-		slog.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
+	if cmdGlobalEntry != nil {
+		d_log.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
 	}
 	return nil
 }

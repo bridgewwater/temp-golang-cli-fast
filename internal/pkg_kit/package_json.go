@@ -96,9 +96,9 @@ func initJsonContent() {
 	if pkgJ.Author.Name == "" {
 		panic(fmt.Errorf("pkg_kit parse package.json author name is empty"))
 	}
-	if pkgJ.Author.Email == "" {
-		panic(fmt.Errorf("pkg_kit parse package.json author email is empty"))
-	}
+	//if pkgJ.Author.Email == "" {
+	//	panic(fmt.Errorf("pkg_kit parse package.json author email is empty"))
+	//}
 	pkgJson = &pkgJ
 }
 
