@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.1.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.0.0...v1.1.0) (2024-04-28)
+
+### ✨ Features
+
+* use sample internal d_log and update action pipeline ([f18be7b3](https://github.com/bridgewwater/temp-golang-cli-fast/commit/f18be7b3f3f95cb36f3b9e837af0bd207ca8207d))
+
+* remove internal/env_kit to use github.com/sinlov-go/unittest-kit/env_kit ([28a3730f](https://github.com/bridgewwater/temp-golang-cli-fast/commit/28a3730fcfb7a9bdcac0230bf583841aea84b248))
+
+* update kit temp-golang-cli-fast ([04743fdd](https://github.com/bridgewwater/temp-golang-cli-fast/commit/04743fdde0dfc81165f99ec1a55f37f830e92037))
+
+* update docker-image template ([90e5fbec](https://github.com/bridgewwater/temp-golang-cli-fast/commit/90e5fbecfa5e6b5a4f0397a374dad76d3c579ab2))
+
+* use github.com/sinlov-go/unittest-kit ([a912045b](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a912045b96592d436ad00d07d1e5dcf862228f4c))
+
+* addd version_check package for support semver version check ([539e35bf](https://github.com/bridgewwater/temp-golang-cli-fast/commit/539e35bf031763c854361d4e5ddb987751292d8a))
+
+* add more test case kit and update task of make ci* ([b3582bae](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b3582bae1889a4e4b369eaacae56f5c7a29e31bb))
+
+### 📝 Documentation
+
+* update help doc of temp-golang-cli-fast ([4e41e002](https://github.com/bridgewwater/temp-golang-cli-fast/commit/4e41e0020ef535457ff4d3761884b8a77a2b6d56))
+
+* update doc of depends ([3ea9573e](https://github.com/bridgewwater/temp-golang-cli-fast/commit/3ea9573e1cbaa888cfe65999fa9e713774f07916))
+
+### ♻ Refactor
+
+* rename file name at internal/pkg_kit ([e3555d7d](https://github.com/bridgewwater/temp-golang-cli-fast/commit/e3555d7d063330245c627377e9bc8784aa7b185d))
+
+* close temp-golang-cli-fast debug print at try fix README.md ([6e8b3c07](https://github.com/bridgewwater/temp-golang-cli-fast/commit/6e8b3c07e0fed15f55c9a77a06e93798883ede5e))
+
+* update unit test case and kit of shell ([69e85e91](https://github.com/bridgewwater/temp-golang-cli-fast/commit/69e85e91958dc1bf896a834253718542ea37ee37))
+
+* test kit change to different file to maintain ([d3d8df62](https://github.com/bridgewwater/temp-golang-cli-fast/commit/d3d8df629356f545fecee8fabf92e7ed5b5d10b3))
+
+* update test_kit for test ([a58fb740](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a58fb740c69f29237b674a555a9e3de89585af32))
+
+### 👷‍ Build System
+
+* update z-MakefileUtils/MakeGoMod.mk ([b3ff76e4](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b3ff76e40bb043fd5974cac56d932de7b779d465))
+
+* bump github.com/stretchr/testify from 1.8.4 to 1.9.0 ([7fac90df](https://github.com/bridgewwater/temp-golang-cli-fast/commit/7fac90df3cdb372315bacff4db3705c455674a73))
+
+* change Dockerfile.s6 -> build.dockerfile ([3ab1e875](https://github.com/bridgewwater/temp-golang-cli-fast/commit/3ab1e8754317222c0b5546f894a7c4177672b25c))
+
+* update make local kit ([44ab4439](https://github.com/bridgewwater/temp-golang-cli-fast/commit/44ab443934089a6c07f55678eea88960ae832e0c))
+
+* update to goversion 1.19.13 ([f9f9f99a](https://github.com/bridgewwater/temp-golang-cli-fast/commit/f9f9f99a63794dfaa5dc37702bba14b14686d20b))
+
 ## 1.0.0 (2024-01-22)
 
 ### 🐛 Bug Fixes
