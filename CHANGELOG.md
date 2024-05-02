@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.2.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.1.0...v1.2.0) (2024-05-03)
+
+### ✨ Features
+
+* add auto-merge-dependabot for auto maintain ([a966c261](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a966c2614037ad25100647f007fbe68b84f871df))
+
+### 👷‍ Build System
+
+* bump golangci/golangci-lint-action from 4 to 5 ([5730c9b2](https://github.com/bridgewwater/temp-golang-cli-fast/commit/5730c9b2c7b7eae1c624483a89d918b67279d764))
+
+* bump convention-change/conventional-version-check ([baafce1e](https://github.com/bridgewwater/temp-golang-cli-fast/commit/baafce1ed54294f8eec2900db803f1252354455d))
+
 ## [1.1.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.0.0...v1.1.0) (2024-04-28)
 
 ### ✨ Features
