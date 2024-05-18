@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # and this use tag
-temple_version='1.3.0'
+temple_version='1.4.0'
 new_version_for_dev='1.0.0'
 go_minimum_version='1.19'
 
@@ -265,27 +265,37 @@ replaceFileByRegular ${new_project}/README.md ${temple_repo_host}\/${temple_grou
 replaceFileByRegular ${new_project}/README.md ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/README.md ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/README.md ${temple_repo_host} ${new_repo_host}
-replaceFileByRegular ${new_project}/go.mod ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
+replaceFileByRegular ${new_project}/doc/dev.md ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
+replaceFileByRegular ${new_project}/doc/dev.md ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
+replaceFileByRegular ${new_project}/doc/dev.md ${temple_name} ${new_project}
+replaceFileByRegular ${new_project}/doc/dev.md ${temple_repo_host} ${new_repo_host}
 replaceFileByRegular ${new_project}/Dockerfile ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/Dockerfile ${temple_group} ${new_repo_group}
 replaceFileByRegular ${new_project}/Dockerfile ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/build.dockerfile ${temple_group}\/${temple_name} ${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/build.dockerfile ${temple_group} ${new_repo_group}
 replaceFileByRegular ${new_project}/build.dockerfile ${temple_name} ${new_project}
-#replaceFileByRegular ${new_project}/docker-compose.yml ${temple_name} ${new_project}
-replaceFileByRegular ${new_project}/Makefile ${temple_group} ${new_repo_group}
+replaceFileByRegular ${new_project}/go.mod ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/Makefile ${temple_name} ${new_project}
+replaceFileByRegular ${new_project}/Makefile ${temple_group} ${new_repo_group}
+# replaceFileByRegular ${new_project}/docker-compose.yml ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/**/*.mk ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/**/*.mk ${temple_group} ${new_repo_group}
-replaceFileByRegular ${new_project}/package.json ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
+replaceFileByRegular ${new_project}/.drone.yml ${temple_repo_host} ${new_repo_host}
+replaceFileByRegular ${new_project}/.drone.yml ${temple_group} ${new_repo_group}
+replaceFileByRegular ${new_project}/.drone.yml ${temple_name} ${new_project}
+replaceFileByRegular ${new_project}/package.json ${temple_repo_host} ${new_repo_host}
 replaceFileByRegular ${new_project}/package.json ${temple_group} ${new_repo_group}
+replaceFileByRegular ${new_project}/package.json ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 replaceFileByRegular ${new_project}/package.json ${temple_name} ${new_project}
-replaceFileByRegular ${new_project}/package.json ${temple_version} ${new_version_for_dev}
+replaceFileByRegular ${new_project}/package.json "\"version\": \"${temple_version}\"," "\"version\": \"${new_version_for_dev}\","
 replaceFileByRegular ${new_project}/.github/workflows-template/docker-buildx-bake/docker-bake.hcl ${temple_name} ${new_project}
 # replace code at folder
 findFileReplaceByRegular ${new_project} "*.go" ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 findFileReplaceByRegular ${new_project} "*.go" ${temple_group} ${new_repo_group}
 findFileReplaceByRegular ${new_project} "*.go" ${temple_name} ${new_project}
+findFileReplaceByRegular ${new_project} "*.dockerfile" ${temple_group} ${new_repo_group}
+findFileReplaceByRegular ${new_project} "*.dockerfile" ${temple_name} ${new_project}
 findFileReplaceByRegular ${new_project} "*.mk" ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 findFileReplaceByRegular ${new_project} "*.mk" ${temple_group} ${new_repo_group}
 findFileReplaceByRegular ${new_project} "*.mk" ${temple_name} ${new_project}
@@ -294,6 +304,7 @@ findFileReplaceByRegular ${new_project} "*.md" ${temple_name} ${new_project}
 findFileReplaceByRegular ${new_project} "*.yml" ${temple_group} ${new_repo_group}
 findFileReplaceByRegular ${new_project} "*.yml" ${temple_name} ${new_project}
 findFileReplaceByRegular ${new_project} "*.hcl" ${temple_name} ${new_project}
+
 # replace go code at root
 replaceFileByRegular ${new_project}/resource.go ${temple_name_go_package} ${new_project_go_package}
 replaceFileByRegular ${new_project}/cmd/${temple_name}/main.go ${temple_name_go_package}.PackageJson ${new_project_go_package}.PackageJson
@@ -382,9 +393,9 @@ esac
 
 # remove README.md last line
 if [[ ${release} -eq "Darwin" ]]; then
-  sed -i "" '12,21d' ./${new_project}/README.md
+    sed -i "" '12,21d' ./${new_project}/README.md
 else
-  sed -i '12,21d' ./${new_project}/README.md
+    sed -i '12,21d' ./${new_project}/README.md
 fi
 
 cd ${new_project}
@@ -393,4 +404,4 @@ git init
 cd ..
 new_project="$(pwd)/${new_project}"
 echo -e "Finish make ${temple_name} project => \033[;32m${new_project}\033[0m"
-echo -e "\033[;34mFor coding, this path can in \$GOPATH when set PATH GO111MODULE=on\033[0m"
+echo -e "\033[;34mFor coding, if path in \$GOPATH can set PATH GO111MODULE=on\033[0m"
