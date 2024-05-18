@@ -24,38 +24,10 @@ $ temp-golang-cli-fast -h
 
 - this project used to cli with golang
 
-## Contributing
-
-[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4-ff69b4.svg)](.github/CONTRIBUTING_DOC/CODE_OF_CONDUCT.md)
-[![GitHub contributors](https://img.shields.io/github/contributors/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast/graphs/contributors)
-
-We welcome community contributions to this project.
-
-Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
-
-请阅读有关 [贡献者指南](.github/CONTRIBUTING_DOC/zh-CN/CONTRIBUTING.md) 以获取更多如何入门的信息
-
 ## Features
 
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
-
-## env
-
-- minimum go version: go 1.19
-- change `go 1.19`, `^1.19`, `1.19.13` to new go version
-
-### libs
-
-| lib                                 | version |
-|:------------------------------------|:--------|
-| https://github.com/stretchr/testify | v1.8.4  |
-| https://github.com/sebdah/goldie    | v2.5.3  |
-| https://github.com/gookit/color     | v1.5.3  |
-| https://github.com/bar-counter/slog | v1.4.0  |
-| https://github.com/urfave/cli/      | v2.23.7 |
-
-- more libs see [go.mod](https://github.com/bridgewwater/temp-golang-cli-fast/blob/main/go.mod)
 
 ## usage
 
@@ -71,138 +43,17 @@ $ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd/temp-golang-cli
     - `bridgewwater` to your owner name
     - `temp-golang-cli-fast` to your project name
 
-# dev
+## dev
 
-## depends
+- see [doc/dev.md](doc/dev.md)
 
-in go mod project
+## Contributing
 
-```bash
-# warning use private git host must set
-# global set for once
-# add private git host like github.com to evn GOPRIVATE
-$ go env -w GOPRIVATE='github.com'
-# use ssh proxy
-# set ssh-key to use ssh as http
-$ git config --global url."git@github.com:".insteadOf "https://github.com/"
-# or use PRIVATE-TOKEN
-# set PRIVATE-TOKEN as gitlab or gitea
-$ git config --global http.extraheader "PRIVATE-TOKEN: {PRIVATE-TOKEN}"
-# set this rep to download ssh as https use PRIVATE-TOKEN
-$ git config --global url."ssh://github.com/".insteadOf "https://github.com/"
+[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4-ff69b4.svg)](.github/CONTRIBUTING_DOC/CODE_OF_CONDUCT.md)
+[![GitHub contributors](https://img.shields.io/github/contributors/bridgewwater/temp-golang-cli-fast)](https://github.com/bridgewwater/temp-golang-cli-fast/graphs/contributors)
 
-# before above global settings
-# test version info
-$ git ls-remote -q https://github.com/bridgewwater/temp-golang-cli-fast.git
+We welcome community contributions to this project.
 
-# test depends see full version
-$ go list -mod readonly -v -m -versions github.com/bridgewwater/temp-golang-cli-fast
-# or use last version add go.mod by script
-$ echo "go mod edit -require=$(go list -mod=readonly -m -versions github.com/bridgewwater/temp-golang-cli-fast | awk '{print $1 "@" $NF}')"
-$ echo "go mod vendor"
-```
+Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
 
-## local dev
-
-```bash
-# It needs to be executed after the first use or update of dependencies.
-$ make init dep
-```
-
-- test code
-
-```bash
-$ make test testBenchmark
-```
-
-add main.go file and run
-
-```bash
-# run and shell help
-$ make devHelp
-
-# run at CLI_VERBOSE=true
-$ make dev
-
-# run at ordinary mode
-$ make run
-```
-
-- ci to fast check
-
-```bash
-# check style at local
-$ make style
-
-# run ci at local
-$ make ci
-```
-
-### docker
-
-```bash
-# then test build as test/Dockerfile
-$ make dockerTestRestartLatest
-# clean test build
-$ make dockerTestPruneLatest
-
-# more info see
-$ make helpDocker
-```
-
-### EngineeringStructure
-
-```
-.
-├── Dockerfile                     # ci docker build
-├── Dockerfile.s6                  # local docker build
-├── Makefile                       # make entry
-├── README.md
-├── build                          # build output
-├── cmd
-│     └── temp-golang-cli-fast     # command line main package install and dev entrance
-│         ├── main.go                   # command line entry
-│         └── main_test.go              # integrated test entry
-├── command                        # command line package
-│         ├── TestMain.go             # common entry in unit test package
-│         ├── flag.go                 # global flag
-│         ├── global.go               # global command
-│         ├── global_test.go          # global command unit test
-│         ├── golder_data_test.go     # unit test test data case
-│         ├── init_test.go            # unit test initialization tool
-│         └── subcommand_new          # subcommandPackage new
-├── constant                       # constant package 
-│         └── env.go                  # constant environment variable
-├── doc                            # command line tools documentation
-│         └── cmd.md
-├── go.mod
-├── go.sum
-├── package.json                   # command line profile information
-├── resource.go                    # embed resource 
-├── utils                          # toolkit package
-│         ├── env_kit                 # environment variables toolkit
-│         ├── log                     # log toolkit
-│         ├── pkgJson                 # package.json toolkit
-│         └── urfave_cli              # urfave/cli toolkit
-├── vendor
-└── z-MakefileUtils                # make toolkit
-
-```
-
-### log
-
-- cli log use [github.com/bar-counter/slog](https://github.com/bar-counter/slog)
-    - open debug log by env `CLI_VERBOSE=true` or global flag `--verbose`
-
-```go
-package foo
-
-func action(c *cli.Context) error {
-	d_log.Debug("SubCommand [ new ] start") // this not show at CLI_VERBOSE=false
-
-	if c.Bool("lib") {
-		d_log.Info("new lib mode")
-	}
-	return nil
-}
-```
+请阅读有关 [贡献者指南](.github/CONTRIBUTING_DOC/zh-CN/CONTRIBUTING.md) 以获取更多如何入门的信息

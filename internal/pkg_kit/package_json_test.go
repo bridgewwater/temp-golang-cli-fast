@@ -13,7 +13,7 @@ const (
   "author": {
     "name": "template-zoo",
     "email": "template-zoogmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli"
+    "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
   }
 }
 `
@@ -24,10 +24,10 @@ const (
   "author": {
     "name": "template-zoo",
     "email": "template-zoogmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli"
+    "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
   },
   "description": "mock go style",
-  "homepage": "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli#readme"
+  "homepage": "https://github.com/bridgewwater/temp-golang-cli-fast#readme"
 }
 `
 )
@@ -198,5 +198,5 @@ func TestGetPackageJsonHomepage(t *testing.T) {
 	assert.Equal(t, "", GetPackageJsonHomepage())
 
 	InitPkgJsonContent(jsonInfoGoStyle)
-	assert.Equal(t, "https://gitea.sinlov.cn/template-zoo/template-gitea-sinlov-cn-golang-cli#readme", GetPackageJsonHomepage())
+	assert.Equal(t, "https://github.com/bridgewwater/temp-golang-cli-fast#readme", GetPackageJsonHomepage())
 }

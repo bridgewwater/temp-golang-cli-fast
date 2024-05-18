@@ -1,0 +1,155 @@
+# dev
+
+## env
+
+- minimum go version: go 1.19
+- change `go 1.19`, `^1.19`, `1.19.13` to new go version
+- change `golangci-lint@v1.53.3` from [golangci-lint version release](https://github.com/golangci/golangci-lint/releases) to new version
+  - more info see [golangci-lint local-installation](https://golangci-lint.run/usage/install/#local-installation)
+
+### libs
+
+| lib                                 | version |
+|:------------------------------------|:--------|
+| https://github.com/stretchr/testify | v1.9.0  |
+| https://github.com/sebdah/goldie    | v2.5.3  |
+| https://github.com/gookit/color     | v1.5.3  |
+| https://github.com/urfave/cli/      | v2.27.2 |
+
+- more libs see [go.mod](https://github.com/bridgewwater/temp-golang-cli-fast/blob/main/go.mod)
+
+## depends
+
+in go mod project
+
+```bash
+# warning use private git host must set
+# global set for once
+# add private git host like github.com to evn GOPRIVATE
+$ go env -w GOPRIVATE='github.com'
+# use ssh proxy
+# set ssh-key to use ssh as http
+$ git config --global url."git@github.com:".insteadOf "https://github.com/"
+# or use PRIVATE-TOKEN
+# set PRIVATE-TOKEN as gitlab or gitea
+$ git config --global http.extraheader "PRIVATE-TOKEN: {PRIVATE-TOKEN}"
+# set this rep to download ssh as https use PRIVATE-TOKEN
+$ git config --global url."ssh://github.com/".insteadOf "https://github.com/"
+
+# before above global settings
+# test version info
+$ git ls-remote -q https://github.com/bridgewwater/temp-golang-cli-fast.git
+
+# test depends see full version
+$ go list -mod readonly -v -m -versions github.com/bridgewwater/temp-golang-cli-fast
+# or use last version add go.mod by script
+$ echo "go mod edit -require=$(go list -mod=readonly -m -versions github.com/bridgewwater/temp-golang-cli-fast | awk '{print $1 "@" $NF}')"
+$ echo "go mod vendor"
+```
+
+## dev tasks
+
+```bash
+# It needs to be executed after the first use or update of dependencies.
+make init dep
+```
+
+- test code
+
+```bash
+make test
+# benchmark and coverage show
+make ci.test.benchmark ci.coverage.show
+```
+
+- ci to fast check as CI pipeline
+
+```bash
+# check style at local
+make style
+
+# run ci at local
+make ci
+```
+
+### docker
+
+```bash
+# then test build as test/Dockerfile
+$ make dockerTestRestartLatest
+# clean test build
+$ make dockerTestPruneLatest
+
+# more info see
+$ make helpDocker
+```
+
+### EngineeringStructure
+
+```
+.
+├── Dockerfile                     # ci docker build
+├── Dockerfile.s6                  # local docker build
+├── Makefile                       # make entry
+├── README.md
+├── build                          # build output
+├── cmd
+│     └── temp-golang-cli-fast     # command line main package install and dev entrance
+│         ├── main.go                   # command line entry
+│         └── main_test.go              # integrated test entry
+├── command                        # command line package
+│         ├── TestMain.go             # common entry in unit test package
+│         ├── flag.go                 # global flag
+│         ├── global.go               # global command
+│         ├── global_test.go          # global command unit test
+│         ├── golder_data_test.go     # unit test test data case
+│         ├── init_test.go            # unit test initialization tool
+│         └── subcommand_new          # subcommandPackage new
+├── constant                       # constant package 
+│         └── env.go                  # constant environment variable
+├── doc                            # command line tools documentation
+│         ├── cmd.md
+│         └── dev.md
+├── go.mod
+├── go.sum
+├── package.json                   # command line profile information
+├── resource.go                    # embed resource 
+├── utils                          # toolkit package
+│         ├── env_kit                 # environment variables toolkit
+│         ├── log                     # log toolkit
+│         ├── pkgJson                 # package.json toolkit
+│         └── urfave_cli              # urfave/cli toolkit
+├── vendor
+└── z-MakefileUtils                # make toolkit
+
+```
+
+### log
+
+- cli log use [github.com/bar-counter/slog](https://github.com/bar-counter/slog)
+    - open debug log by env `CLI_VERBOSE=true` or global flag `--verbose`
+
+```go
+package foo
+
+import (
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
+)
+
+// GlobalBeforeAction
+// do command Action before flag global.
+func GlobalBeforeAction(c *cli.Context) error {
+	isVerbose := c.Bool(constant.NameKeyCliVerbose)
+	if isVerbose {
+		d_log.OpenDebug()
+	}
+	return nil
+}
+
+func Biz() {
+	d_log.Debug("debug log")
+	d_log.Debugf("debug log")
+}
+
+```
