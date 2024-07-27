@@ -16,11 +16,19 @@ const (
 	exitCodeCmdArgs = 2
 )
 
+var buildID string
+
+func init() {
+	if buildID == "" {
+		buildID = "unknown"
+	}
+}
+
 func main() {
 	d_log.SetLogLineDeep(d_log.DefaultExtLogLineMaxDeep)
 	pkg_kit.InitPkgJsonContent(temp_golang_cli_fast.PackageJson)
 
-	app := cli.NewCliApp()
+	app := cli.NewCliApp(buildID)
 
 	args := os.Args
 	if len(args) < 2 {
