@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.3.0...v1.4.0) (2024-07-28)
+
+### ✨ Features
+
+* update full make tasks ([049c505a](https://github.com/bridgewwater/temp-golang-cli-fast/commit/049c505a3067b8fdd5339771bf725a2b3a672218))
+
+### 👷‍ Build System
+
+* support `buildID` at CI pipline inject for print at cli ([45cee85d](https://github.com/bridgewwater/temp-golang-cli-fast/commit/45cee85d27129955e609c9cb63689a83dbafd60f)), feat [#17](https://github.com/bridgewwater/temp-golang-cli-fast/issues/17)
+
+* bump golangci/golangci-lint-action from 5 to 6 ([d35e79a6](https://github.com/bridgewwater/temp-golang-cli-fast/commit/d35e79a6263e756ffb2b257b59dce6f905f58311))
+
 ## [1.3.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.2.0...v1.3.0) (2024-05-07)
 
 ### ✨ Features
