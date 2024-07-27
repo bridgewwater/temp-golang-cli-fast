@@ -45,7 +45,7 @@ $ go install -v github.com/bridgewwater/temp-golang-cli-fast/cmd/temp-golang-cli
 
 ## dev
 
-- see [doc/dev.md](doc/dev.md)
+- see [dev.md](doc-dev/dev.md)
 
 ## Contributing
 
