@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.2...v1.4.3) (2024-08-01)
+
+### 👷‍ Build System
+
+* add `main.buildID` at build pipeline at github action ([00f271a7](https://github.com/bridgewwater/temp-golang-cli-fast/commit/00f271a72ede06237a704c12ac0e39a17c1378ef))
+
 ## [1.4.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.1...v1.4.2) (2024-08-01)
 
 ### 📝 Documentation
