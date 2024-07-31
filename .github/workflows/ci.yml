@@ -69,7 +69,7 @@ jobs:
     with:
       version_name: ${{ needs.version.outputs.tag_name }}
       upload_artifact_name: go-release
-      build_id_set: ${{ needs.version.outputs.short_sha }}
+      go_build_id: ${{ needs.version.outputs.short_sha }}
 
   deploy-tag:
     needs:
