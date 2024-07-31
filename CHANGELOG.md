@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.1...v1.4.2) (2024-08-01)
+
+### 📝 Documentation
+
+* update dependabot commit-message ([add911a8](https://github.com/bridgewwater/temp-golang-cli-fast/commit/add911a885aea1fc89c2782dfdb9bb705ddee1d2))
+
+### 👷‍ Build System
+
+* bump github.com/urfave/cli/v2 from 2.27.2 to 2.27.3 ([21ec5c85](https://github.com/bridgewwater/temp-golang-cli-fast/commit/21ec5c854188167f50c13bcd8cdce7c8011cb3bf))
+
 ## [1.4.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.0...v1.4.1) (2024-07-28)
 
 ### 👷‍ Build System
