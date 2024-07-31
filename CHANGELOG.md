@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.3...v1.5.0) (2024-08-01)
+
+### ✨ Features
+
+* update make task to use more env config to change package ([be586bec](https://github.com/bridgewwater/temp-golang-cli-fast/commit/be586bec71f8ee8cc185e385498a558836f0fed7))
+
 ## [1.4.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.2...v1.4.3) (2024-08-01)
 
 ### 👷‍ Build System
