@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.0...v1.5.1) (2024-08-02)
+
+### 📝 Documentation
+
+* update usage of `cli tools to init project fast` version ([1387afc0](https://github.com/bridgewwater/temp-golang-cli-fast/commit/1387afc0dbb75c1e2de11f5fca93ae8c54e669fc))
+
+### 👷‍ Build System
+
+* update makefile script and close `go mod vendor` at github action ([25a4ffb4](https://github.com/bridgewwater/temp-golang-cli-fast/commit/25a4ffb42850db3740c817b28c434ba659d5f70c))
+
 ## [1.5.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.4.3...v1.5.0) (2024-08-01)
 
 ### ✨ Features
