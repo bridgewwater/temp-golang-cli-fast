@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.2...v1.5.3) (2024-08-02)
+
+### 👷‍ Build System
+
+* update `helpDocker` to PHONY ([84d1e59e](https://github.com/bridgewwater/temp-golang-cli-fast/commit/84d1e59efe27bb4953944827671255ba9146485b))
+
 ## [1.5.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.1...v1.5.2) (2024-08-02)
 
 ### 👷‍ Build System
