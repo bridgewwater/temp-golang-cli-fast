@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.4](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.3...v1.5.4) (2024-08-03)
+
+### 👷‍ Build System
+
+* update `.gitattributes` config ([154b9309](https://github.com/bridgewwater/temp-golang-cli-fast/commit/154b93099f525e28e934dbf0d3df7a2a3bed6ecb))
+
 ## [1.5.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.2...v1.5.3) (2024-08-02)
 
 ### 👷‍ Build System
