@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.6](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.5...v1.5.6) (2024-08-09)
+
+### 🐛 Bug Fixes
+
+* fix `temp-golang-cli-fast` for change doc-dev/dev.md ([1e39de40](https://github.com/bridgewwater/temp-golang-cli-fast/commit/1e39de4055648c47ef6140cda1f658361d3e07d2))
+
+### 👷‍ Build System
+
+* bump github.com/sebdah/goldie/v2 from 2.5.3 to 2.5.5 ([82020b3b](https://github.com/bridgewwater/temp-golang-cli-fast/commit/82020b3bcc7cc470dfc3300bf54f43170e7fac99))
+
 ## [1.5.5](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.4...v1.5.5) (2024-08-03)
 
 ### 🐛 Bug Fixes
