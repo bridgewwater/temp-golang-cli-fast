@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.6.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.6...v1.6.0) (2024-08-12)
+
+### ✨ Features
+
+* conditional logging and output adjustment ([1f53f2ef](https://github.com/bridgewwater/temp-golang-cli-fast/commit/1f53f2efcb1a3ff592e2a6ab500cd9a3af3f84a5)), feat [#22](https://github.com/bridgewwater/temp-golang-cli-fast/issues/22)
+
+### 📝 Documentation
+
+* bump version to 1.6.0 Update temple_version in temp-golang-cli-fast and README.md ([dacf03fa](https://github.com/bridgewwater/temp-golang-cli-fast/commit/dacf03fa5601cf8e0386fd27982afa608a67019b))
+
+### 👷‍ Build System
+
+* bump github.com/urfave/cli/v2 from 2.27.3 to 2.27.4 ([0e2eeec7](https://github.com/bridgewwater/temp-golang-cli-fast/commit/0e2eeec793bca7e25acba35f378ca31da6a6245a))
+
 ## [1.5.6](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.5...v1.5.6) (2024-08-09)
 
 ### 🐛 Bug Fixes
