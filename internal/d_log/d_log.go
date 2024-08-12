@@ -20,6 +20,17 @@ const (
 	findExtLogLineCallDeep  = 4
 )
 
+func init() {
+	changeLogOutput()
+}
+
+type logWriter struct {
+}
+
+func (writer logWriter) Write(bytes []byte) (int, error) {
+	return fmt.Print(string(bytes))
+}
+
 var extLogLineMaxDeep = DefaultExtLogLineMaxDeep
 
 var (
@@ -30,6 +41,7 @@ var (
 func OpenDebug() {
 	openDebug = true
 	ShowLogLineNo(true)
+	changeLogOutput()
 }
 
 func ShowLogLineNo(openLine bool) {
@@ -41,6 +53,16 @@ func SetLogLineDeep(deep uint) {
 		deep = 1
 	}
 	extLogLineMaxDeep = int(deep)
+}
+
+func changeLogOutput() {
+	if openDebug {
+		log.SetFlags(log.LstdFlags)
+		log.SetOutput(log.Default().Writer())
+	} else {
+		log.SetFlags(0)
+		log.SetOutput(new(logWriter))
+	}
 }
 
 func formatLog(msg string) string {
