@@ -108,7 +108,9 @@ func GlobalAction(c *cli.Context) error {
 //nolint:golint,unused
 func GlobalAfterAction(c *cli.Context) error {
 	if cmdGlobalEntry != nil {
-		d_log.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
+		if c.Bool(constant.NameKeyCliVerbose) {
+			d_log.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
+		}
 	}
 	return nil
 }
