@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.7.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.6.0...v1.7.0) (2024-10-12)
+
+### ✨ Features
+
+* update Go version to 1.21 and related dependencies ([3d0536bb](https://github.com/bridgewwater/temp-golang-cli-fast/commit/3d0536bb7ecb9693d776956e7a92bfcedf5c2ffd))
+
+### 📝 Documentation
+
+* update contributing guidelines and templates ([f44259ef](https://github.com/bridgewwater/temp-golang-cli-fast/commit/f44259efcca272eb2f0c467d63e8b350044dacb6))
+
+### 👷‍ Build System
+
+* bump github.com/sinlov-go/unittest-kit from 1.1.1 to 1.2.1 ([3ee7ac01](https://github.com/bridgewwater/temp-golang-cli-fast/commit/3ee7ac01b1a4d2736ab2ad77b3c343c6971aefac))
+
+* bump github.com/sinlov-go/unittest-kit from 1.1.0 to 1.1.1 ([bdcf04f5](https://github.com/bridgewwater/temp-golang-cli-fast/commit/bdcf04f5060fb686128f443b7681a6bf9a044949))
+
+* bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0 ([41f170ff](https://github.com/bridgewwater/temp-golang-cli-fast/commit/41f170ff2ba7546ac8643f3e0bfcda67f4b24100))
+
 ## [1.6.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.5.6...v1.6.0) (2024-08-12)
 
 ### ✨ Features
