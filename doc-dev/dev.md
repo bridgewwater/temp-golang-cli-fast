@@ -2,19 +2,30 @@
 
 ## env
 
-- minimum go version: go 1.19
-- change `go 1.19`, `^1.19`, `1.19.13` to new go version
-- change `golangci-lint@v1.53.3` from [golangci-lint version release](https://github.com/golangci/golangci-lint/releases) to new version
-  - more info see [golangci-lint local-installation](https://golangci-lint.run/usage/install/#local-installation)
+- minimum go version: go 1.21
+- change `go 1.21`, `^1.21`, `1.21.13` to new go version
+- change `golangci-lint@v1.59.1`
+  from [golangci-lint version release](https://github.com/golangci/golangci-lint/releases) to new version
+    - more info see [golangci-lint local-installation](https://golangci-lint.run/usage/install/#local-installation)
+
+```
+          # version: v1.61.0 for go verison 1.22.1+
+          # version: v1.59.1 for go verison 1.21+
+          # version: v1.55.2 for go verison 1.20+
+          # version: v1.53.3 for go verison 1.19+
+          # version: v1.45.2 for go verison 1.18+
+          # version: v1.42.1 for go verison 1.17+
+          # version: v1.41.0 for go verison 1.16+
+```
 
 ### libs
 
 | lib                                 | version |
 |:------------------------------------|:--------|
 | https://github.com/stretchr/testify | v1.9.0  |
-| https://github.com/sebdah/goldie    | v2.5.3  |
-| https://github.com/gookit/color     | v1.5.3  |
-| https://github.com/urfave/cli/      | v2.27.2 |
+| https://github.com/sebdah/goldie    | v2.5.5  |
+| https://github.com/gookit/color     | v1.5.4  |
+| https://github.com/urfave/cli/      | v2.27.4 |
 
 - more libs see [go.mod](https://github.com/bridgewwater/temp-golang-cli-fast/blob/main/go.mod)
 
