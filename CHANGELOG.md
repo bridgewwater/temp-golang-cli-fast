@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.8.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.7.0...v1.8.0) (2024-10-12)
+
+### ✨ Features
+
+* implement BuildInfo struct and update version handling ([bc5e31d8](https://github.com/bridgewwater/temp-golang-cli-fast/commit/bc5e31d8931109cb90e0815add2cdbc07dbb9a91)), feat [#29](https://github.com/bridgewwater/temp-golang-cli-fast/issues/29)
+
+### 📝 Documentation
+
+* add monorepo configuration ([bcfd318a](https://github.com/bridgewwater/temp-golang-cli-fast/commit/bcfd318ab945611c20fd5de424d59cfc11ca6db2))
+
+* bump version to 1.8.0 ([1a53e52b](https://github.com/bridgewwater/temp-golang-cli-fast/commit/1a53e52b6dacfeaa65badaf0e1c4b5fcb76bb4eb))
+
 ## [1.7.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.6.0...v1.7.0) (2024-10-12)
 
 ### ✨ Features
