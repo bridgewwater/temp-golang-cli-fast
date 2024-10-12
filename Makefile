@@ -8,7 +8,7 @@ ROOT_NAME ?=temp-golang-cli-fast
 
 ## MakeDocker.mk settings start
 ROOT_OWNER ?=bridgewwater
-ROOT_PARENT_SWITCH_TAG =1.19.13
+ROOT_PARENT_SWITCH_TAG =1.21.13
 # for image local build
 INFO_TEST_BUILD_DOCKER_PARENT_IMAGE =golang
 # for image running
