@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/bridgewwater/temp-golang-cli-fast"
 	"github.com/bridgewwater/temp-golang-cli-fast/cmd/cli"
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/gookit/color"
@@ -13,10 +14,19 @@ import (
 )
 
 const (
+	// exitCodeCmdArgs SIGINT as 2
 	exitCodeCmdArgs = 2
 )
 
-var buildID string
+//nolint:gochecknoglobals
+var (
+	// Populated by goreleaser during build
+	version    = "unknown"
+	rawVersion = "unknown"
+	buildID    string
+	commit     = "?"
+	date       = ""
+)
 
 func init() {
 	if buildID == "" {
@@ -28,7 +38,18 @@ func main() {
 	d_log.SetLogLineDeep(d_log.DefaultExtLogLineMaxDeep)
 	pkg_kit.InitPkgJsonContent(temp_golang_cli_fast.PackageJson)
 
-	app := cli.NewCliApp(buildID)
+	bdInfo := pkg_kit.NewBuildInfo(
+		pkg_kit.GetPackageJsonName(),
+		version,
+		rawVersion,
+		buildID,
+		commit,
+		date,
+		pkg_kit.GetPackageJsonAuthor().Name,
+		constant.CopyrightStartYear,
+	)
+
+	app := cli.NewCliApp(bdInfo)
 
 	args := os.Args
 	if len(args) < 2 {
@@ -37,5 +58,6 @@ func main() {
 	}
 	if err := app.Run(args); nil != err {
 		color.Redf("cli err at %v\n", err)
+		os.Exit(exitCodeCmdArgs)
 	}
 }
