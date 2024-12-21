@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.8.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.2...v1.8.3) (2024-12-21)
+
+### 👷‍ Build System
+
+* update GitHub release action to v2 ([05161028](https://github.com/bridgewwater/temp-golang-cli-fast/commit/051610280780037baa61040cf577f1cf3cf98a1e))
+
+* update CLI version to 1.8.3 ([524d752c](https://github.com/bridgewwater/temp-golang-cli-fast/commit/524d752cd464d0a4c3be04d17995d4ae4570866d))
+
 ## [1.8.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.1...v1.8.2) (2024-12-21)
 
 ### 👷‍ Build System
