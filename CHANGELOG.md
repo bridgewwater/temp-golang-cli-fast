@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.8.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.1...v1.8.2) (2024-12-21)
+
+### 👷‍ Build System
+
+* bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1 ([807013e5](https://github.com/bridgewwater/temp-golang-cli-fast/commit/807013e5fc35562894387d608ca80fb29a862dcd))
+
+* bump github.com/stretchr/testify from 1.9.0 to 1.10.0 ([cd4c27ea](https://github.com/bridgewwater/temp-golang-cli-fast/commit/cd4c27eac2a9220166ef2e4dfb9fa78eb3258220))
+
+* bump github.com/urfave/cli/v2 from 2.27.4 to 2.27.5 ([f4ae63a5](https://github.com/bridgewwater/temp-golang-cli-fast/commit/f4ae63a540aedd2da40eaf3e3c160e724f38a601))
+
 ## [1.8.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.0...v1.8.1) (2024-10-12)
 
 ### 📝 Documentation
