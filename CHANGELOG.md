@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.9.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.3...v1.9.0) (2025-01-18)
+
+### ✨ Features
+
+* add targets for updating module dependencies ([57a6a0a3](https://github.com/bridgewwater/temp-golang-cli-fast/commit/57a6a0a30d680dde64b4f50ed150a42554b39c63)), feat [#34](https://github.com/bridgewwater/temp-golang-cli-fast/issues/34)
+
+### 👷‍ Build System
+
+* update dependabot Go ecosystem check frequency ([7e699762](https://github.com/bridgewwater/temp-golang-cli-fast/commit/7e6997625ffebd008060089f72c9859892912b3c))
+
 ## [1.8.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.2...v1.8.3) (2024-12-21)
 
 ### 👷‍ Build System
