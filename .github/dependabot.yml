@@ -23,7 +23,7 @@ updates:
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "sunday"
     commit-message:
       prefix: "build(go)"
