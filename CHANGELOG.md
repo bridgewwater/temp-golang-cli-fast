@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.9.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.9.0...v1.9.1) (2025-01-19)
+
+### 📝 Documentation
+
+* update golangci-lint version and upgrade temp-golang-cli-fast ([af8dbd49](https://github.com/bridgewwater/temp-golang-cli-fast/commit/af8dbd495846ca0af913000a63fb58dc305b1069))
+
 ## [1.9.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.8.3...v1.9.0) (2025-01-18)
 
 ### ✨ Features
