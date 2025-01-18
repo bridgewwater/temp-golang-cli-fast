@@ -9,13 +9,13 @@
     - more info see [golangci-lint local-installation](https://golangci-lint.run/usage/install/#local-installation)
 
 ```
-          # version: v1.61.0 for go verison 1.22.1+
-          # version: v1.59.1 for go verison 1.21+
-          # version: v1.55.2 for go verison 1.20+
-          # version: v1.53.3 for go verison 1.19+
-          # version: v1.45.2 for go verison 1.18+
-          # version: v1.42.1 for go verison 1.17+
-          # version: v1.41.0 for go verison 1.16+
+          # version: v1.61.0 for go version 1.22.1+
+          # version: v1.59.1 for go version 1.21+
+          # version: v1.55.2 for go version 1.20+
+          # version: v1.53.3 for go version 1.19+
+          # version: v1.45.2 for go version 1.18+
+          # version: v1.42.1 for go version 1.17+
+          # version: v1.41.0 for go version 1.16+
 ```
 
 ### libs
