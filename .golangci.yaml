@@ -2,8 +2,9 @@
 issues: # https://golangci-lint.run/usage/configuration/#issues-configuration
   exclude-dirs:
     - z-MakefileUtils
-    - doc
     - manifest
+    - doc
+    - doc-dev
     - docs
 run: # https://golangci-lint.run/usage/configuration/#run-configuration
   # The default concurrency value is the number of available CPU.
@@ -44,4 +45,4 @@ run: # https://golangci-lint.run/usage/configuration/#run-configuration
   # Define the Go version limit.
   # Mainly related to generics support since go1.18.
   # Default: use Go version from the go.mod file, fallback on the env var `GOVERSION`, fallback on 1.17
-  # go: '1.20'
+  # go: '1.19'

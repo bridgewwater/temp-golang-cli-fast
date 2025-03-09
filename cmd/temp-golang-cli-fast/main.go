@@ -40,6 +40,7 @@ func main() {
 
 	bdInfo := pkg_kit.NewBuildInfo(
 		pkg_kit.GetPackageJsonName(),
+		pkg_kit.GetPackageJsonDescription(),
 		version,
 		rawVersion,
 		buildID,

@@ -14,9 +14,14 @@ var (
 )
 
 func FetchNowVersion() string {
+	checkPackageJsonLoad()
 	return nowVersion
 }
 func FetchNowBuildId() string {
+	checkPackageJsonLoad()
+	if nowBuildId == "" {
+		panic("nowBuildId is empty, please init by method NewBuildInfo()")
+	}
 	return nowBuildId
 }
 
@@ -26,7 +31,8 @@ const (
 )
 
 type BuildInfo struct {
-	PkgName string `json:"pkgName"`
+	PkgName     string `json:"pkgName"`
+	Description string `json:"description"`
 
 	Version    string `json:"version"`
 	RawVersion string `json:"rawVersion"`
@@ -54,8 +60,23 @@ func (b BuildInfo) Copyright() string {
 		b.CopyrightStartYear, b.CopyrightNowYear, b.AuthorName, b.GoVersion, b.BuildId, b.Platform)
 }
 
+func (b BuildInfo) RunInfoString() string {
+	return fmt.Sprintf("%s, run on %s, built with %s id: %s from %s on %s",
+		b.PkgName, b.Platform, b.GoVersion, b.BuildId, b.GitCommit, b.Date,
+	)
+}
+
 func (b BuildInfo) PgkNameString() string {
 	return b.PkgName
+}
+
+func (b BuildInfo) PgkFullInfo() string {
+	return fmt.Sprintf("%s by: %s build with %s id: %s, run on %s",
+		b.PkgName, b.AuthorName, b.GoVersion, b.BuildId, b.Platform)
+}
+
+func (b BuildInfo) DescriptionString() string {
+	return b.Description
 }
 
 func (b BuildInfo) VersionString() string {
@@ -67,12 +88,14 @@ func (b BuildInfo) RawVersionString() string {
 }
 
 func NewBuildInfo(
-	pkgName, version, rawVersion,
+	pkgName, description,
+	version, rawVersion,
 	buildId, commit, date,
 	author, copyrightStartYear string,
 ) BuildInfo {
 	info := BuildInfo{
-		PkgName: pkgName,
+		PkgName:     pkgName,
+		Description: description,
 
 		Version:    version,
 		RawVersion: rawVersion,

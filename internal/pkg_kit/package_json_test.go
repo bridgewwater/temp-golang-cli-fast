@@ -11,8 +11,8 @@ const (
   "version": "1.2.3",
   "name": "mock",
   "author": {
-    "name": "template-zoo",
-    "email": "template-zoogmppt@gmail.com",
+    "name": "bridgewwater",
+    "email": "sinlovgmppt@gmail.com",
     "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
   }
 }
@@ -22,8 +22,8 @@ const (
   "version": "v1.2.3",
   "name": "mock go style",
   "author": {
-    "name": "template-zoo",
-    "email": "template-zoogmppt@gmail.com",
+    "name": "bridgewwater",
+    "email": "sinlovgmppt@gmail.com",
     "url": "https://github.com/bridgewwater/temp-golang-cli-fast"
   },
   "description": "mock go style",
@@ -168,8 +168,8 @@ func TestGetPackageJsonAuthor(t *testing.T) {
 	// do GetPackageJsonAuthorName
 
 	// verify GetPackageJsonAuthorName
-	assert.Equal(t, "template-zoo", GetPackageJsonAuthor().Name)
-	assert.Equal(t, "template-zoogmppt@gmail.com", GetPackageJsonAuthor().Email)
+	assert.Equal(t, "bridgewwater", GetPackageJsonAuthor().Name)
+	assert.Equal(t, "sinlovgmppt@gmail.com", GetPackageJsonAuthor().Email)
 }
 func TestGetPackageJsonDescription(t *testing.T) {
 	t.Logf("~> mock GetPackageJsonDescription")
