@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.10.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.9.1...v1.10.0) (2025-03-10)
+
+### ✨ Features
+
+* update temple version to1.10.0 and add remote version check ([a00112b1](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a00112b1cc2c70f1b64bdca68c2dabe5a22cb42a))
+
+* add golang godoc support ([2062e4cc](https://github.com/bridgewwater/temp-golang-cli-fast/commit/2062e4cc9b4cd8df5d2775a2ee23d3586de7b403))
+
+### ♻ Refactor
+
+* rename test files and add example test ([ea690270](https://github.com/bridgewwater/temp-golang-cli-fast/commit/ea690270a5e98d8e8a763c32093e70976d7e782a))
+
+### 👷‍ Build System
+
+* add configurable inputs for golang-ci.yml and update ci workflow ([a686b5b4](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a686b5b4bac8fa63231c926d36f5170ecc19083d))
+
 ## [1.9.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.9.0...v1.9.1) (2025-01-19)
 
 ### 📝 Documentation
