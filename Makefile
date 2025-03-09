@@ -35,6 +35,13 @@ endif
 ENV_ROOT_TEST_MAX_TIME :=1m
 ## go test go-test.mk end
 
+## go doc start
+ENV_GO_GODOC_PORT_NUMBER=36060
+ENV_GO_GODOC_EXPORT_PATH=build/godoc-dump
+ENV_GO_GODOC_EXPORT_PKG =github.com/bridgewwater/temp-golang-cli-fast/
+include z-MakefileUtils/go-doc.mk
+## go doc end
+
 ## clean args start
 ENV_ROOT_BUILD_PATH =build
 ENV_ROOT_LOG_PATH =logs/
@@ -280,6 +287,7 @@ help: helpProjectRoot
 	@echo "$$ make help.test.go"
 	@echo "$$ make help.go.list"
 	@echo "$$ make help.go.mod"
+	@echo "$$ make help.go.doc"
 	@echo ""
 	@echo "-- more info see Makefile include --"
 
