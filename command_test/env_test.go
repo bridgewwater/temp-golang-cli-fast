@@ -1,4 +1,4 @@
-package example_test
+package command_test
 
 import (
 	"github.com/sinlov-go/unittest-kit/env_kit"
