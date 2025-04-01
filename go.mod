@@ -2,15 +2,13 @@ module github.com/bridgewwater/temp-golang-cli-fast
 
 go 1.21
 
-toolchain go1.21.13
-
 require (
 	github.com/Masterminds/semver/v3 v3.3.1
 	github.com/gookit/color v1.5.4
 	github.com/sebdah/goldie/v2 v2.5.5
 	github.com/sinlov-go/unittest-kit v1.2.1
 	github.com/stretchr/testify v1.10.0
-	github.com/urfave/cli/v2 v2.27.5
+	github.com/urfave/cli/v2 v2.27.6
 )
 
 require (
