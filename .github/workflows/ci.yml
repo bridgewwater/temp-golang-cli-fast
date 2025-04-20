@@ -49,7 +49,7 @@ jobs:
     with:
       run_test_case: true
       run_golangci_lint: true
-      run_benchmark: false
+      run_benchmark: true
       run_test_coverage: true
 
   go-build-check-main:
