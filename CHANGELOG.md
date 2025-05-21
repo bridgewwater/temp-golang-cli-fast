@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.13.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.12.2...v1.13.0) (2025-05-21)
+
+### ✨ Features
+
+* update release process and add GoReleaser support ([668f3e15](https://github.com/bridgewwater/temp-golang-cli-fast/commit/668f3e1589161e9d2f32cc856dd26d4639869bfa))
+
+### ♻ Refactor
+
+* update archives section in .goreleaser.yml ([592e73ec](https://github.com/bridgewwater/temp-golang-cli-fast/commit/592e73ec23519ea1869adb1d72ed0e56d5d23f61))
+
 ## [1.12.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.12.1...v1.12.2) (2025-05-21)
 
 ### ♻ Refactor
