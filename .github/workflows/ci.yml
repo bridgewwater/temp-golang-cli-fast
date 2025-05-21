@@ -6,7 +6,7 @@ on:
       - '**/README.md'
       - '**/doc-dev/*'
     branches:
-      # - 'main'
+      - 'main'
       - 'release-*'
       - '*-feature-*'
       - '*-enhancement-*'
@@ -53,35 +53,94 @@ jobs:
       run_benchmark: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
       run_test_coverage: true
 
-  go-build-check-main:
-    name: go-build-check-main
+  go-goreleaser-dry-run:
+    name: go-goreleaser-dry-run
     needs:
-      - version
-      - golang-ci
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
-    uses: ./.github/workflows/go-release-platform.yml
+     - version
+     - golang-ci
+    uses: ./.github/workflows/goreleaser-golang.yml
+    if: ${{ github.ref_type != 'tag' }}
     secrets: inherit
     with:
-      version_name: latest
-      go_build_id: ${{ needs.version.outputs.short_sha }}
+      version_name: ${{ needs.version.outputs.cc_date }}
+      goreleaser-build-timeout-minutes: 30
+      dry_run: true
+      # upload_artifact_name: go-release
 
-  go-release-platform:
-    name: go-release-platform
+  # go-build-check-main:
+  #   name: go-build-check-main
+  #   needs:
+  #     - version
+  #     - golang-ci
+  #   if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
+  #   uses: ./.github/workflows/go-release-platform.yml
+  #   secrets: inherit
+  #   with:
+  #     version_name: latest
+  #     go_build_id: ${{ needs.version.outputs.short_sha }
+
+  ### tag to release start
+
+  go-goreleaser-by-tag:
+    name: go-goreleaser-by-tag
     needs:
-      - version
-      - golang-ci
+     - version
+     - golang-ci
+    uses: ./.github/workflows/goreleaser-golang.yml
     if: startsWith(github.ref, 'refs/tags/')
-    uses: ./.github/workflows/go-release-platform.yml
     secrets: inherit
     with:
       version_name: ${{ needs.version.outputs.tag_name }}
-      go_build_id: ${{ needs.version.outputs.short_sha }}
+      goreleaser-build-timeout-minutes: 30
       upload_artifact_name: go-release
+      # dry_run: false
+
+  # go-release-platform:
+  #   name: go-release-platform
+  #   needs:
+  #    - version
+  #    - golang-ci
+  #    # - docker-image-tag
+  #   if: startsWith(github.ref, 'refs/tags/')
+  #   uses: ./.github/workflows/go-release-platform.yml
+  #   secrets: inherit
+  #   with:
+  #     version_name: ${{ needs.version.outputs.tag_name }}
+  #     # upload_artifact_name: go-release
+
+  # docker-bake-basic-all-tag:
+  #   name: docker-bake-basic-all-tag
+  #   needs:
+  #     - version
+  #   uses: ./.github/workflows/docker-buildx-bake-hubdocker-tag.yml
+  #   if: startsWith(github.ref, 'refs/tags/')
+  #   with:
+  #     docker_bake_targets: 'image-basic'
+  #     docker-metadata-flavor-suffix: '' # default is '', can add as: -alpine -debian
+  #     # push_remote_flag: true # default is true
+  #   secrets:
+  #     DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
+
+  # docker-bake-multi-basic-all-tag:
+  #   name: docker-bake-multi-basic-all-tag
+  #   needs:
+  #     - version
+  #   uses: ./.github/workflows/docker-buildx-bake-multi-tag.yml
+  #   if: startsWith(github.ref, 'refs/tags/')
+  #   with:
+  #     ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
+  #     docker_bake_targets: 'image-basic'
+  #     docker-metadata-flavor-suffix: '' # default is '', can add as: -alpine -debian
+  #     # push_remote_flag: true # default is true
+  #   secrets:
+  #     DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}
 
   deploy-tag:
     needs:
       - version
-      - go-release-platform
+      - go-goreleaser-by-tag
+      # - docker-bake-multi-basic-all-tag
+      # - go-release-platform
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
@@ -92,3 +151,5 @@ jobs:
       tag_name: ${{ needs.version.outputs.tag_name }}
       tag_changes: ${{ needs.version.outputs.cc_changes }}
       download_artifact_name: go-release # download artifact name, download from actions/upload-artifact, as: {download_artifact_name}-{tag_name}-*, empty is not download
+
+  ### tag to release end
