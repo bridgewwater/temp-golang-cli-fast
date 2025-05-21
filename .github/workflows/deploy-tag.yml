@@ -38,6 +38,13 @@ jobs:
     name: repo-release
     runs-on: ubuntu-latest
     steps:
+      - name: Check inputs
+        run: |
+          echo "inputs.dry_run: ${{ inputs.dry_run }}"
+          echo "inputs.prerelease: ${{ inputs.prerelease }}"
+          echo "inputs.tag_name: ${{ inputs.tag_name }}"
+          echo "inputs.download_artifact_name: ${{ inputs.download_artifact_name }}"
+
       - uses: actions/checkout@v4
 
       - name: Check deploy inputs
@@ -72,7 +79,7 @@ jobs:
           # body_path: ${{ github.workspace }}/CHANGELOG.md
           ## set release binaries, empty means do not upload files for release
           # https://github.com/isaacs/node-glob
-          files: |
-            **/*.zip
-            **/*.tar.gz
-            **/*.sha256
+          # files: |
+          #   **/*.zip
+          #   **/*.tar.gz
+          #   **/*.sha256
