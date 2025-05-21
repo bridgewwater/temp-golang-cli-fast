@@ -76,7 +76,7 @@ jobs:
     with:
       version_name: ${{ needs.version.outputs.tag_name }}
       go_build_id: ${{ needs.version.outputs.short_sha }}
-      # upload_artifact_name: go-release
+      upload_artifact_name: go-release
 
   deploy-tag:
     needs:
@@ -91,4 +91,4 @@ jobs:
       prerelease: true
       tag_name: ${{ needs.version.outputs.tag_name }}
       tag_changes: ${{ needs.version.outputs.cc_changes }}
-      # download_artifact_name: go-release # download artifact name, download from actions/upload-artifact, as: {download_artifact_name}-{tag_name}-*, empty is not download
+      download_artifact_name: go-release # download artifact name, download from actions/upload-artifact, as: {download_artifact_name}-{tag_name}-*, empty is not download
