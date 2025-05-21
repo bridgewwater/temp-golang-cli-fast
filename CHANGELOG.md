@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.12.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.12.1...v1.12.2) (2025-05-21)
+
+### ♻ Refactor
+
+* reorganize project structure and improve code readability ([c6b12fc8](https://github.com/bridgewwater/temp-golang-cli-fast/commit/c6b12fc8ef2d6ae12e7c7d6ec78468bce71d3a93))
+
 ## [1.12.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.12.0...v1.12.1) (2025-05-21)
 
 ### 👷‍ Build System
