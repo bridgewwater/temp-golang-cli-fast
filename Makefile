@@ -1,13 +1,12 @@
-.PHONY: test check clean build dist all
-#TOP_DIR := $(shell pwd)
-# can change by env:ENV_CI_DIST_VERSION , env:ENV_CI_DIST_MARK , env:ENV_CI_DIST_CODE_MARK by CI
-ENV_DIST_VERSION :=v0.1.2
+# Makefile root
+# can change this by env:ENV_CI_DIST_VERSION use and change by env:ENV_CI_DIST_MARK by CI
+ENV_DIST_VERSION=latest
 ENV_DIST_MARK=
 
-ROOT_NAME ?=temp-golang-cli-fast
+ROOT_NAME?=temp-golang-cli-fast
 
 ## MakeDocker.mk settings start
-ROOT_OWNER ?=bridgewwater
+ROOT_OWNER?=bridgewwater
 ROOT_PARENT_SWITCH_TAG =1.21.13
 # for image local build
 INFO_TEST_BUILD_DOCKER_PARENT_IMAGE =golang
@@ -18,8 +17,8 @@ INFO_TEST_BUILD_DOCKER_FILE =build.dockerfile
 ## MakeDocker.mk settings end
 
 ## run info start
-ENV_RUN_INFO_HELP_ARGS =-h
-ENV_RUN_INFO_ARGS      =new args1 args2
+ENV_RUN_INFO_HELP_ARGS = -h
+ENV_RUN_INFO_ARGS =
 ## run info end
 
 ## go test go-test.mk start
@@ -37,7 +36,7 @@ ENV_ROOT_TEST_MAX_TIME :=1m
 
 ## go doc start
 ENV_GO_GODOC_PORT_NUMBER=36060
-ENV_GO_GODOC_EXPORT_PATH=build/godoc-dump
+ENV_GO_GODOC_EXPORT_PATH=build/godoc
 ENV_GO_GODOC_EXPORT_PKG =github.com/bridgewwater/temp-golang-cli-fast/
 include z-MakefileUtils/go-doc.mk
 ## go doc end
@@ -48,7 +47,7 @@ ENV_ROOT_LOG_PATH =logs/
 ## clean args end
 
 ## build args start
-ENV_ROOT_BUILD_ENTRANCE =cmd/temp-golang-cli-fast/main.go
+ENV_ROOT_BUILD_ENTRANCE=cmd/temp-golang-cli-fast/main.go
 ENV_ROOT_BUILD_PATH =build
 ENV_ROOT_BUILD_BIN_NAME =${ROOT_NAME}
 ENV_ROOT_BUILD_BIN_PATH =${ENV_ROOT_BUILD_PATH}/${ENV_ROOT_BUILD_BIN_NAME}
@@ -74,9 +73,20 @@ include z-MakefileUtils/go-dist.mk
 # include MakeDockerRun.mk for docker run
 include z-MakefileUtils/MakeDocker.mk
 
+define buildGoBinaryLocal
+	@echo "=> start $(0)"
+	@echo "-> start build local OS: ${PLATFORM} ${OS_BIT}"
+	@echo "         build out path: ${1}"
+	@echo "         build entrance: ${2}"
+	@echo "         buildID: ${3}"
+	go build -ldflags "-X main.buildID=${3}" -o ${1} ${2}
+endef
+
+.PHONY: all
 all: env
 
-env: distEnv
+.PHONY: env
+env:
 	@echo "== project env info start =="
 	@echo ""
 	@echo "test info"
@@ -100,21 +110,21 @@ endif
 	@echo "ENV_DIST_CODE_MARK                        ${ENV_DIST_CODE_MARK}"
 	@echo "== project env info end =="
 
-.PHONY: cleanBuild
-cleanBuild:
+.PHONY: clean.build
+clean.build:
 	@$(RM) -r ${ENV_ROOT_BUILD_PATH}
 	@echo "~> finish clean path: ${ENV_ROOT_BUILD_PATH}"
 
-.PHONY: cleanLog
-cleanLog:
+.PHONY: clean.log
+clean.log:
 	@$(RM) -r ${ENV_ROOT_LOG_PATH}
 	@echo "~> finish clean path: ${ENV_ROOT_LOG_PATH}"
 
-.PHONY: cleanTest
-cleanTest: test.go.clean
+.PHONY: clean.test
+clean.test: test.go.clean
 
-.PHONY: cleanTestData
-cleanTestData:
+.PHONY: clean.test.data
+clean.test.data:
 	$(info -> notes: remove folder [ testdata ] unable to match subdirectories)
 	@$(RM) -r **/testdata
 	@$(RM) -r **/**/testdata
@@ -125,7 +135,7 @@ cleanTestData:
 	$(info -> finish clean folder [ testdata ])
 
 .PHONY: clean
-clean: cleanTest cleanBuild cleanLog
+clean: clean.test clean.build clean.log
 	@echo "~> clean finish"
 
 .PHONY: cleanAll
@@ -145,7 +155,7 @@ init:
 dep: go.mod.verify go.mod.download go.mod.tidy
 
 .PHONY: style
-style: go.mod.verify go.mod.tidy go.mod.fmt go.mod.lint.run
+style: go.mod.verify go.mod.tidy go.mod.fmt go.mod.lint.run.v2
 
 .PHONY: test
 test: test.go
@@ -164,18 +174,18 @@ ci.all: ci ci.test.benchmark ci.coverage.show
 
 .PHONY: buildMain
 buildMain:
-	@echo "-> start build local OS: ${PLATFORM} ${OS_BIT}"
+	@echo "-> start buildMain local OS: ${PLATFORM} ${OS_BIT}"
 ifeq ($(OS),Windows_NT)
-	go build -ldflags "-X main.buildID=${ENV_DIST_CODE_MARK}" -o ${ENV_ROOT_BUILD_BIN_PATH}.exe ${ENV_ROOT_BUILD_ENTRANCE}
+	$(call buildGoBinaryLocal,${ENV_ROOT_BUILD_BIN_PATH}.exe,${ENV_ROOT_BUILD_ENTRANCE},${ENV_DIST_CODE_MARK})
 	@echo "-> finish build out path: $(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe"
 else
-	@go build -ldflags "-X main.buildID=${ENV_DIST_CODE_MARK}" -o ${ENV_ROOT_BUILD_BIN_PATH} ${ENV_ROOT_BUILD_ENTRANCE}
+	$(call buildGoBinaryLocal,${ENV_ROOT_BUILD_BIN_PATH},${ENV_ROOT_BUILD_ENTRANCE},${ENV_DIST_CODE_MARK})
 	@echo "-> finish build out path: ${ENV_ROOT_BUILD_BIN_PATH}"
 endif
 
 .PHONY: dev.help
 dev.help: export CI_DEBUG=false
-dev.help: cleanBuild buildMain
+dev.help: clean.build buildMain
 ifeq ($(OS),Windows_NT)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_HELP_ARGS}
 else
@@ -184,7 +194,7 @@ endif
 
 .PHONY: dev
 dev: export CI_DEBUG=true
-dev: cleanBuild buildMain
+dev: clean.build buildMain
 ifeq ($(OS),Windows_NT)
 	$(subst /,\,${ENV_ROOT_BUILD_BIN_PATH}).exe ${ENV_RUN_INFO_ARGS}
 else
@@ -192,7 +202,7 @@ else
 endif
 
 .PHONY: devInstallLocal
-devInstallLocal: cleanBuild buildMain
+devInstallLocal: clean.build buildMain
 ifeq ($(shell go env GOPATH),)
 	$(error can not get go env GOPATH)
 endif
@@ -208,6 +218,10 @@ endif
 run.help: export CLI_VERBOSE=false
 run.help:
 	go run -v ${ENV_ROOT_BUILD_ENTRANCE} ${ENV_RUN_INFO_HELP_ARGS}
+
+run.version: export CLI_VERBOSE=false
+run.version:
+	go run -v ${ENV_ROOT_BUILD_ENTRANCE} --version
 
 .PHONY: run
 run: export CLI_VERBOSE=false
@@ -290,4 +304,3 @@ help: helpProjectRoot
 	@echo "$$ make help.go.doc"
 	@echo ""
 	@echo "-- more info see Makefile include --"
-
