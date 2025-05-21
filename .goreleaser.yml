@@ -50,7 +50,7 @@ gitea_urls:
 archives:
   - id: 'cli'  # not set will be default
     # Builds reference which build instances should be archived in this archive.
-    builds:
+    ids:
       - cli
 
     formats:
