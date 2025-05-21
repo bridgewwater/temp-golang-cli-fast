@@ -4,23 +4,24 @@ package main
 
 import (
 	"fmt"
-	"github.com/bridgewwater/temp-golang-cli-fast"
+	os "os"
+
+	temp_golang_cli_fast "github.com/bridgewwater/temp-golang-cli-fast"
 	"github.com/bridgewwater/temp-golang-cli-fast/cmd/cli"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/cli_kit/pkg_kit"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
 	"github.com/gookit/color"
-	os "os"
 )
 
 const (
-	// exitCodeCmdArgs SIGINT as 2
+	// exitCodeCmdArgs SIGINT as 2.
 	exitCodeCmdArgs = 2
 )
 
 //nolint:gochecknoglobals
 var (
-	// Populated by goreleaser during build
+	// Populated by goreleaser during build.
 	version    = "unknown"
 	rawVersion = "unknown"
 	buildID    string
@@ -57,6 +58,7 @@ func main() {
 		fmt.Printf("%s %s --help\n", color.Yellow.Render("please see help as:"), app.Name)
 		os.Exit(exitCodeCmdArgs)
 	}
+
 	if err := app.Run(args); nil != err {
 		color.Redf("cli err at %v\n", err)
 		os.Exit(exitCodeCmdArgs)

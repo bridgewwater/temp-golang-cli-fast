@@ -1,14 +1,16 @@
 package command
 
 import (
+	"errors"
 	"fmt"
-	"github.com/bridgewwater/temp-golang-cli-fast/constant"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/pkg_kit"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli/cli_exit_urfave"
-	"github.com/urfave/cli/v2"
 	"os"
 	"strings"
+
+	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/cli_kit/pkg_kit"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/cli_kit/urfave_cli/cli_exit_urfave"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
+	"github.com/urfave/cli/v2"
 )
 
 type GlobalConfig struct {
@@ -34,9 +36,7 @@ type (
 	}
 )
 
-var (
-	cmdGlobalEntry *GlobalCommand
-)
+var cmdGlobalEntry *GlobalCommand
 
 // CmdGlobalEntry
 //
@@ -50,10 +50,12 @@ func CmdGlobalEntry() *GlobalCommand {
 //	do global command exec
 func (c *GlobalCommand) globalExec() error {
 	d_log.Debug("-> start GlobalAction")
+
 	if c.Verbose {
 		d_log.Verbosef("cli exec full: %s", c.RootCfg.ExecFullPath)
 		d_log.Verbosef("     run path: %s", c.RootCfg.RunRootPath)
 		d_log.Verbosef("     args len: %v", c.Args.Len())
+
 		if c.Args.Len() > 0 {
 			d_log.Verbosef("     args content: %s", strings.Join(c.Args.Slice(), " | "))
 		}
@@ -64,7 +66,7 @@ func (c *GlobalCommand) globalExec() error {
 
 // withGlobalFlag
 //
-// bind global flag to globalExec
+// bind global flag to globalExec.
 func withGlobalFlag(c *cli.Context, cliVersion, cliName, homePage string) (*GlobalCommand, error) {
 	d_log.Debug("-> withGlobalFlag")
 
@@ -79,15 +81,23 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName, homePage string) (*Glob
 	if len(cliRunRootPath) == 0 {
 		rootDir, err := os.Getwd()
 		if err != nil {
-			d_log.Errorf(err, "get rooted path name corresponding to the current directory path err")
+			d_log.Errorf(
+				err,
+				"get rooted path name corresponding to the current directory path err",
+			)
+
 			return nil, cli_exit_urfave.Err(err)
 		}
+
 		cliRunRootPath = rootDir
 	}
 
 	timeoutSecond := c.Uint(constant.NameCliTimeoutSecond)
 	if timeoutSecond < constant.MinimumTimeoutSecond {
-		d_log.Warnf("timeout second is too small, will use default value: %d", constant.MinimumTimeoutSecond)
+		d_log.Warnf(
+			"timeout second is too small, will use default value: %d",
+			constant.MinimumTimeoutSecond,
+		)
 	}
 
 	config := GlobalConfig{
@@ -108,6 +118,7 @@ func withGlobalFlag(c *cli.Context, cliVersion, cliName, homePage string) (*Glob
 		Verbose: isVerbose,
 		RootCfg: config,
 	}
+
 	return &p, nil
 }
 
@@ -120,10 +131,12 @@ func GlobalBeforeAction(c *cli.Context) error {
 	}
 
 	appName := c.App.Name
+
 	cliVersion := c.App.Version
 	if isVerbose {
 		d_log.Warnf("-> open verbose, and now command version is: %s", cliVersion)
 	}
+
 	homePage := pkg_kit.GetPackageJsonHomepage()
 
 	cmdEntry, err := withGlobalFlag(c, cliVersion, appName, homePage)
@@ -132,6 +145,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 	}
 
 	cmdGlobalEntry = cmdEntry
+
 	return nil
 }
 
@@ -139,13 +153,14 @@ func GlobalBeforeAction(c *cli.Context) error {
 // do command Action flag.
 func GlobalAction(c *cli.Context) error {
 	if cmdGlobalEntry == nil {
-		panic(fmt.Errorf("not init GlobalBeforeAction success to new cmdGlobalEntry"))
+		panic(errors.New("not init GlobalBeforeAction success to new cmdGlobalEntry"))
 	}
 
 	err := cmdGlobalEntry.globalExec()
 	if err != nil {
 		return cli_exit_urfave.Format("run GlobalAction err: %v", err)
 	}
+
 	return nil
 }
 
@@ -157,8 +172,13 @@ func GlobalAction(c *cli.Context) error {
 func GlobalAfterAction(c *cli.Context) error {
 	if cmdGlobalEntry != nil {
 		if c.Bool(constant.NameCliVerbose) {
-			d_log.Infof("-> finish run command: %s, version %s", cmdGlobalEntry.Name, cmdGlobalEntry.Version)
+			d_log.Infof(
+				"-> finish run command: %s, version %s",
+				cmdGlobalEntry.Name,
+				cmdGlobalEntry.Version,
+			)
 		}
 	}
+
 	return nil
 }

@@ -1,12 +1,13 @@
 package subcommand_new
 
 import (
+	"strings"
+
 	"github.com/bridgewwater/temp-golang-cli-fast/command"
 	"github.com/bridgewwater/temp-golang-cli-fast/constant"
+	"github.com/bridgewwater/temp-golang-cli-fast/internal/cli_kit/urfave_cli"
 	"github.com/bridgewwater/temp-golang-cli-fast/internal/d_log"
-	"github.com/bridgewwater/temp-golang-cli-fast/internal/urfave_cli"
 	"github.com/urfave/cli/v2"
-	"strings"
 )
 
 const commandName = "new"
@@ -29,11 +30,19 @@ type NewCommand struct {
 }
 
 func (n *NewCommand) Exec() error {
-	d_log.Debugf("-> Exec cli [ %s ] by subCommand [ %s ], version %s buildID %s", n.cliName, commandName, n.version, n.buildId)
+	d_log.Debugf(
+		"-> Exec cli [ %s ] by subCommand [ %s ], version %s buildID %s",
+		n.cliName,
+		commandName,
+		n.version,
+		n.buildId,
+	)
+
 	if n.isDebug {
 		d_log.Verbosef("cli full path: %s", n.execFullPath)
 		d_log.Verbosef("     run path: %s", n.runRootPath)
 		d_log.Verbosef("     args len: %v", n.Args.Len())
+
 		if n.Args.Len() > 0 {
 			d_log.Verbosef("     args content: %s", strings.Join(n.Args.Slice(), " | "))
 		}
@@ -63,7 +72,9 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 	if c.Bool("lib") {
 		d_log.Info("new lib mode")
 	}
+
 	globalEntry := command.CmdGlobalEntry()
+
 	return &NewCommand{
 		cliName:  globalEntry.Name,
 		version:  globalEntry.Version,
@@ -83,11 +94,14 @@ func withEntry(c *cli.Context) (*NewCommand, error) {
 
 func action(c *cli.Context) error {
 	d_log.Debugf("-> Sub Command action [ %s ] start", commandName)
+
 	entry, err := withEntry(c)
 	if err != nil {
 		return err
 	}
+
 	commandEntry = entry
+
 	return commandEntry.Exec()
 }
 
@@ -98,9 +112,9 @@ func Command() []*cli.Command {
 			Usage:  "",
 			Action: action,
 
-			//Flags: flag(),
+			// Flags: flag(),
 			// todo: if not use platform config, remove this use method flag()
-			//Flags: urfave_cli.UrfaveCliAppendCliFlag(flag(), command.HideGlobalFlag()),
+			// Flags: urfave_cli.UrfaveCliAppendCliFlag(flag(), command.HideGlobalFlag()),
 			Flags: urfave_cli.UrfaveCliAppendCliFlag(flag(), constant.PlatformFlags()),
 		},
 	}
