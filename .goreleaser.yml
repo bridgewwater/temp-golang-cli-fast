@@ -9,14 +9,14 @@ builds:
     main: "./cmd/temp-golang-cli-fast"
     flags:
       - -trimpath
-    # ldflags: -s -w -X main.version={{.Version}} -X main.buildID={{.ShortCommit}} -X main.commit={{.FullCommit}} -X main.date={{.Date}}
+    # ldflags: -s -w -X main.version={{ .Version }} -X main.buildID={{ .ShortCommit }} -X main.commit={{ .FullCommit }} -X main.date={{ .Date }}
     ldflags:
       - -s -w
-      - -X main.version={{.Version}}
-      - -X main.rawVersion={{.RawVersion}}
-      - -X main.buildID={{.ShortCommit}}
-      - -X main.commit={{.FullCommit}}
-      - -X main.date={{.Date}}
+      - -X main.version={{ .Version }}
+      - -X main.rawVersion={{ .RawVersion }}
+      - -X main.buildID={{ .ShortCommit }}
+      - -X main.commit={{ .FullCommit }}
+      - -X main.date={{ .Date }}
       - --extldflags "-static -fpic"
     env:
       - CGO_ENABLED=0
@@ -42,8 +42,8 @@ builds:
 
 force_token: gitea
 gitea_urls:
-  api: https://gitea.sinlov.cn/api/v1
-  download: https://gitea.sinlov.cn/
+  api: https://github.com/api/v1
+  download: https://github.com/
   # set to true if you use a self-signed certificate
   skip_tls_verify: false
 
@@ -104,7 +104,7 @@ changelog:
   # disable: "{{ .Env.CREATE_CHANGELOG }}"
   disable: false
   use: git
-  format: "{{.SHA}}: {{.Message}} (@{{.AuthorUsername}})"
+  format: "{{ .SHA }}: {{ .Message }} (@{{ .AuthorUsername }})"
   sort: asc
 
   filters:

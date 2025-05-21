@@ -1,14 +1,14 @@
 # This dockerfile uses extends image https://hub.docker.com/bridgewwater/temp-golang-cli-fast
 # VERSION 1
 # Author: bridgewwater
-# dockerfile offical document https://docs.docker.com/engine/reference/builder/
+# dockerfile official document https://docs.docker.com/engine/reference/builder/
 # https://hub.docker.com/_/golang
 FROM golang:1.21.13 as builder
 
 ARG GO_ENV_PACKAGE_NAME=github.com/bridgewwater/temp-golang-cli-fast
 ARG GO_ENV_ROOT_BUILD_BIN_NAME=temp-golang-cli-fast
 ARG GO_ENV_ROOT_BUILD_BIN_PATH=build/${GO_ENV_ROOT_BUILD_BIN_NAME}
-ARG GO_ENV_ROOT_BUILD_ENTRANCE=cmd/temp-golang-cli-fast/main.go
+ARG GO_ENV_ROOT_BUILD_ENTRANCE="cmd/temp-golang-cli-fast/main.go"
 
 ARG GO_PATH_SOURCE_DIR=/go/src
 WORKDIR ${GO_PATH_SOURCE_DIR}
@@ -18,7 +18,7 @@ COPY $PWD ${GO_PATH_SOURCE_DIR}/${GO_ENV_PACKAGE_NAME}
 
 # proxy golang
 RUN go env -w "GOPROXY=https://goproxy.cn,direct"
-RUN go env -w "GOPRIVATE='*.gitlab.com,*.gitee.com"
+RUN go env -w "GOPRIVATE='*.gitlab.com,*.gitee.com,*.sinlov.cn"
 
 RUN cd ${GO_PATH_SOURCE_DIR}/${GO_ENV_PACKAGE_NAME} && \
     go mod download -x
