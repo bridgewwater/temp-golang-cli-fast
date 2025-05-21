@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.12.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.11.0...v1.12.0) (2025-05-21)
+
+### ✨ Features
+
+* migrate to golangci-lint v2 and update related configurations ([668304b2](https://github.com/bridgewwater/temp-golang-cli-fast/commit/668304b23ce080f7dbe4000534daac5b83904bbd))
+
+### 👷‍ Build System
+
+* bump codecov/codecov-action from 5.4.2 to 5.4.3 ([7c9d7be9](https://github.com/bridgewwater/temp-golang-cli-fast/commit/7c9d7be92982059413496a1eb47cdc7848186636))
+
+* switch Go version from 1.21 to 1.23 ([e6d18563](https://github.com/bridgewwater/temp-golang-cli-fast/commit/e6d18563d5e541b85c6871a3b78c410c33194026))
+
+* update dependabot configuration ([eb311ea8](https://github.com/bridgewwater/temp-golang-cli-fast/commit/eb311ea8ca0e25895a3663a1c2a4e6a6e7304787))
+
+* bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.6 ([2bb3f79c](https://github.com/bridgewwater/temp-golang-cli-fast/commit/2bb3f79c97665795481aa679b4cc7147c2848b83))
+
 ## [1.11.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/1.10.0...v1.11.0) (2025-03-10)
 
 ### ✨ Features
