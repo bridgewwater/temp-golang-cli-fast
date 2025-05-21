@@ -1,6 +1,8 @@
 module github.com/bridgewwater/temp-golang-cli-fast
 
-go 1.21
+go 1.23
+
+toolchain go1.23.8
 
 require (
 	github.com/Masterminds/semver/v3 v3.3.1

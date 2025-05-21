@@ -3,7 +3,7 @@
 # Author: bridgewwater
 # dockerfile official document https://docs.docker.com/engine/reference/builder/
 # https://hub.docker.com/_/golang
-FROM golang:1.21.13 as builder
+FROM golang:1.23.8 as builder
 
 ARG GO_ENV_PACKAGE_NAME=github.com/bridgewwater/temp-golang-cli-fast
 ARG GO_ENV_ROOT_BUILD_BIN_NAME=temp-golang-cli-fast
