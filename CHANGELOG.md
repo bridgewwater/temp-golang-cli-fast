@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.14.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.3...v1.14.0) (2025-05-23)
+
+### ✨ Features
+
+* add SaveBuildInfo method and improve build information handling ([9a2915bc](https://github.com/bridgewwater/temp-golang-cli-fast/commit/9a2915bc4c400c90f34e51876febda5017eed454))
+
 ## [1.13.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.2...v1.13.3) (2025-05-22)
 
 ### 👷‍ Build System
