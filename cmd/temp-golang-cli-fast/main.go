@@ -50,6 +50,7 @@ func main() {
 		pkg_kit.GetPackageJsonAuthor().Name,
 		constant.CopyrightStartYear,
 	)
+	pkg_kit.SaveBuildInfo(&bdInfo)
 
 	app := cli.NewCliApp(bdInfo)
 
