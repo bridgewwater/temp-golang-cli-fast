@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.13.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.1...v1.13.2) (2025-05-22)
+
+### 👷‍ Build System
+
+* update docker buildx bake workflows and add debug steps ([a8b86845](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a8b868453478b3940809d9c7bf5422a8f3886114))
+
+* update goreleaser version to v2.9.0 ([2fa3ef37](https://github.com/bridgewwater/temp-golang-cli-fast/commit/2fa3ef37a5d7b70f331d26a27e0f7f2f356e8f7a))
+
 ## [1.13.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.0...v1.13.1) (2025-05-21)
 
 ### 👷‍ Build System
