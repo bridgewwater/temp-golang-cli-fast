@@ -79,34 +79,37 @@ jobs:
   #     version_name: latest
   #     go_build_id: ${{ needs.version.outputs.short_sha }
 
-  ### tag to release start
-
-  go-goreleaser-by-tag:
-    name: go-goreleaser-by-tag
-    needs:
-     - version
-     - golang-ci
-    uses: ./.github/workflows/goreleaser-golang.yml
-    if: startsWith(github.ref, 'refs/tags/')
-    secrets: inherit
-    with:
-      version_name: ${{ needs.version.outputs.tag_name }}
-      goreleaser-build-timeout-minutes: 30
-      upload_artifact_name: go-release
-      # dry_run: false
-
-  # go-release-platform:
-  #   name: go-release-platform
+  # docker-bake-basic-all-latest:
+  #   name: docker-bake-basic-all-latest
   #   needs:
-  #    - version
-  #    - golang-ci
-  #    # - docker-image-tag
-  #   if: startsWith(github.ref, 'refs/tags/')
-  #   uses: ./.github/workflows/go-release-platform.yml
-  #   secrets: inherit
+  #     - version
+  #     - go-goreleaser-dry-run
+  #   uses: ./.github/workflows/docker-buildx-bake-hubdocker-latest.yml
+  #   if: ${{ github.ref_type != 'tag' }}
   #   with:
-  #     version_name: ${{ needs.version.outputs.tag_name }}
-  #     # upload_artifact_name: go-release
+  #     # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+  #     push_remote_flag: ${{ github.event.pull_request.merged == true }}
+  #     docker_bake_targets: 'image-basic'
+  #   secrets:
+  #     DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
+
+  # docker-bake-multi-basic-all-latest:
+  #   name: docker-bake-multi-basic-all-latest
+  #   needs:
+  #     - version
+  #     - go-goreleaser-dry-run
+  #   uses: ./.github/workflows/docker-buildx-bake-multi-latest.yml
+  #   if: ${{ github.ref_type != 'tag' }}
+  #   # if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
+  #   with:
+  #     ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
+  #     # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+  #     push_remote_flag: ${{ github.event.pull_request.merged == true }}
+  #     docker_bake_targets: 'image-basic'
+  #   secrets:
+  #     DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
+
+  ### tag to release start
 
   # docker-bake-basic-all-tag:
   #   name: docker-bake-basic-all-tag
@@ -135,11 +138,39 @@ jobs:
   #   secrets:
   #     DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}
 
+  go-goreleaser-by-tag:
+    name: go-goreleaser-by-tag
+    needs:
+     - version
+     - golang-ci
+    uses: ./.github/workflows/goreleaser-golang.yml
+    if: startsWith(github.ref, 'refs/tags/')
+    secrets: inherit
+    with:
+      version_name: ${{ needs.version.outputs.tag_name }}
+      goreleaser-build-timeout-minutes: 30
+      upload_artifact_name: go-release
+      # dry_run: false
+
+  # go-release-platform:
+  #   name: go-release-platform
+  #   needs:
+  #    - version
+  #    - golang-ci
+  #    # - docker-image-tag
+  #   if: startsWith(github.ref, 'refs/tags/')
+  #   uses: ./.github/workflows/go-release-platform.yml
+  #   secrets: inherit
+  #   with:
+  #     version_name: ${{ needs.version.outputs.tag_name }}
+  #     # upload_artifact_name: go-release
+
   deploy-tag:
     needs:
       - version
-      - go-goreleaser-by-tag
+      # - docker-bake-basic-all-tag
       # - docker-bake-multi-basic-all-tag
+      - go-goreleaser-by-tag
       # - go-release-platform
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
