@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.13.3](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.2...v1.13.3) (2025-05-22)
+
+### 👷‍ Build System
+
+* update Dockerfile and CI workflow ([b446d91e](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b446d91e8565d5b62089bfb3ce171658bf59a9ed))
+
 ## [1.13.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.1...v1.13.2) (2025-05-22)
 
 ### 👷‍ Build System
