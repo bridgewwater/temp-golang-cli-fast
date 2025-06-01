@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.14.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.0...v1.14.1) (2025-06-01)
+
+### 👷‍ Build System
+
+* improve Dependabot PR handling and expand codecov to release branches ([ab525e90](https://github.com/bridgewwater/temp-golang-cli-fast/commit/ab525e90596c20fdba9823a8f028cb6967c6a6fa))
+
 ## [1.14.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.13.3...v1.14.0) (2025-05-23)
 
 ### ✨ Features
