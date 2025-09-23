@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.14.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.1...v1.14.2) (2025-09-23)
+
+### 🐛 Bug Fixes
+
+* update error message for invalid semantic version ([e1524e1d](https://github.com/bridgewwater/temp-golang-cli-fast/commit/e1524e1da9099af62a9aab4f95bb3b27ceabd158))
+
+### 👷‍ Build System
+
+* bump github.com/gookit/color from 1.5.4 to 1.6.0 ([d8d4f5cd](https://github.com/bridgewwater/temp-golang-cli-fast/commit/d8d4f5cd91066acac789ea8cadc290076a649489))
+
+* bump github.com/stretchr/testify from 1.10.0 to 1.11.1 ([b538a136](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b538a136809348727cea84cc1e269f89a6f8f7ca))
+
+* bump codecov/codecov-action from 5.4.3 to 5.5.0 ([70c4823c](https://github.com/bridgewwater/temp-golang-cli-fast/commit/70c4823c3640a5a6f49d008c82ac15a76ba8adfe))
+
+* bump github.com/sebdah/goldie/v2 from 2.5.5 to 2.7.1 ([8381d667](https://github.com/bridgewwater/temp-golang-cli-fast/commit/8381d667a65376ca29f623a50dbe8a5f83bd052c))
+
+* bump github.com/urfave/cli/v2 from 2.27.6 to 2.27.7 ([f5b3635f](https://github.com/bridgewwater/temp-golang-cli-fast/commit/f5b3635f85152e45636f10748a5b5b397e22dc12))
+
+* bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0 ([7896bd8e](https://github.com/bridgewwater/temp-golang-cli-fast/commit/7896bd8e8a00923fd074907ec7811d09eb90b04f))
+
 ## [1.14.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.0...v1.14.1) (2025-06-01)
 
 ### 👷‍ Build System
