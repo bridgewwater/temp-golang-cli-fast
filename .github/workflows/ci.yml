@@ -1,6 +1,7 @@
 name: ci
 
 on:
+  workflow_dispatch: # manual trigger
   push:
     paths-ignore:
       - '**/README.md'
