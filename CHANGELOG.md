@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.15.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.2...v1.15.0) (2025-12-29)
+
+### ✨ Features
+
+* add manual trigger to CI workflow and revert linter default to standard ([8457b40d](https://github.com/bridgewwater/temp-golang-cli-fast/commit/8457b40dafacf58aabe4fc3427665cb5805972c8))
+
+### 👷‍ Build System
+
+* bump golangci/golangci-lint-action from 8 to 9 ([7d23c912](https://github.com/bridgewwater/temp-golang-cli-fast/commit/7d23c9124a9de13ddf86e73c891fcacedee6faba))
+
+* bump actions/checkout from 4 to 6 ([dfe4817f](https://github.com/bridgewwater/temp-golang-cli-fast/commit/dfe4817f03b98f356cafff0b25a61bb7173a6460))
+
+* bump github.com/sebdah/goldie/v2 from 2.7.1 to 2.8.0 ([77a40a52](https://github.com/bridgewwater/temp-golang-cli-fast/commit/77a40a52a2dc3e689f5992e63db4b3075168d386))
+
+* bump actions/upload-artifact from 4 to 5 ([2058e049](https://github.com/bridgewwater/temp-golang-cli-fast/commit/2058e049935a2d9d3745476e3ce14932ee946c5a))
+
+* bump actions/download-artifact from 4 to 6 ([5ac793cd](https://github.com/bridgewwater/temp-golang-cli-fast/commit/5ac793cd46e6aaf038fd92cb620570373fe9840b))
+
+* bump codecov/codecov-action from 5.5.0 to 5.5.1 ([dd6a5101](https://github.com/bridgewwater/temp-golang-cli-fast/commit/dd6a5101648626794803c983936de89dbb80f169))
+
+* bump actions/setup-go from 5 to 6 ([eeebc295](https://github.com/bridgewwater/temp-golang-cli-fast/commit/eeebc29585124f75df7a2214ce563360b862a933))
+
 ## [1.14.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.1...v1.14.2) (2025-09-23)
 
 ### 🐛 Bug Fixes
