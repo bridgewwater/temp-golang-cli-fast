@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.15.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.15.0...v1.15.1) (2026-01-26)
+
+### 👷‍ Build System
+
+* bump actions/upload-artifact from 5 to 6 ([60a5374c](https://github.com/bridgewwater/temp-golang-cli-fast/commit/60a5374cea5bb89160ba5022644e992350629f5c))
+
+* bump codecov/codecov-action from 5.5.1 to 5.5.2 ([560376ab](https://github.com/bridgewwater/temp-golang-cli-fast/commit/560376aba17c49575dced7c930405d39ef28a3b5))
+
+* bump actions/download-artifact from 6 to 7 ([a92bb5b5](https://github.com/bridgewwater/temp-golang-cli-fast/commit/a92bb5b5e7f4b3eaeea5f33304df2ecf4601fd7b))
+
 ## [1.15.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.14.2...v1.15.0) (2025-12-29)
 
 ### ✨ Features
