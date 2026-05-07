@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.16.0](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.15.1...v1.16.0) (2026-05-07)
+
+### 🐛 Bug Fixes
+
+* correct error messages in version check tests ([1e386dca](https://github.com/bridgewwater/temp-golang-cli-fast/commit/1e386dca02d9365524f8a9f02f781b728b78738c))
+
+### ✨ Features
+
+* add contributing and code of conduct documents in Chinese ([b9627ed0](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b9627ed0d3c3412a62314c07e616c56a806c4501))
+
+### 👷‍ Build System
+
+* bump github.com/gookit/color from 1.6.0 to 1.6.1 ([63e0a3a9](https://github.com/bridgewwater/temp-golang-cli-fast/commit/63e0a3a9d3cda04279f115624684fa0f1b36e871))
+
+* bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0 ([ab1e5a50](https://github.com/bridgewwater/temp-golang-cli-fast/commit/ab1e5a50ffcdd924ee18e747388e8ca69e111f53))
+
+* bump softprops/action-gh-release from 2 to 3 ([bff464a0](https://github.com/bridgewwater/temp-golang-cli-fast/commit/bff464a05cc26564ce0a8f3cc93e48ede2b756a7))
+
+* bump dependabot/fetch-metadata from 2 to 3 ([86cd4295](https://github.com/bridgewwater/temp-golang-cli-fast/commit/86cd42959c2542af841a7b770da04a0b6c0eefe6))
+
+* bump codecov/codecov-action from 5.5.2 to 6.0.0 ([fdd197e5](https://github.com/bridgewwater/temp-golang-cli-fast/commit/fdd197e5b6e942056b39cba356c3cac1da4a8b65))
+
+* bump actions/download-artifact from 7 to 8 ([d1e0d722](https://github.com/bridgewwater/temp-golang-cli-fast/commit/d1e0d722eca23f1e43e9b90dc75770352c0c1c34))
+
+* bump actions/upload-artifact from 6 to 7 ([31482581](https://github.com/bridgewwater/temp-golang-cli-fast/commit/314825813cc159dfaeb64707019e56161052854b))
+
+* bump goreleaser/goreleaser-action from 6 to 7 ([5f454229](https://github.com/bridgewwater/temp-golang-cli-fast/commit/5f454229b24fdbec1e3b54f0ebc289c9561648aa))
+
 ## [1.15.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.15.0...v1.15.1) (2026-01-26)
 
 ### 👷‍ Build System
