@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.16.2](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.16.1...v1.16.2) (2026-08-06)
+
+### 📝 Documentation
+
+* add branch-check to version configuration ([074c3959](https://github.com/bridgewwater/temp-golang-cli-fast/commit/074c3959782a8f256949893a6bac642104a99879))
+
+### 👷‍ Build System
+
+* bump actions/setup-go from 6 to 7 ([b11c089b](https://github.com/bridgewwater/temp-golang-cli-fast/commit/b11c089be90c97786e4a32bf940df0f315a30f42))
+
+* bump codecov/codecov-action from 6.0.1 to 7.0.0 ([ae799bbe](https://github.com/bridgewwater/temp-golang-cli-fast/commit/ae799bbed9123e0d947ee54317a4ee4dc56c23c1))
+
+* bump convention-change/conventional-version-check ([3b5e95c3](https://github.com/bridgewwater/temp-golang-cli-fast/commit/3b5e95c3290c8a17ddec5bbb50c18315f9ee75b7))
+
+* bump actions/checkout from 6 to 7 ([97974cf1](https://github.com/bridgewwater/temp-golang-cli-fast/commit/97974cf15157685da1708aef4a5315087f77bcb9))
+
 ## [1.16.1](https://github.com/bridgewwater/temp-golang-cli-fast/compare/v1.16.0...v1.16.1) (2026-06-01)
 
 ### 👷‍ Build System
